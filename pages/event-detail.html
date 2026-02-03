@@ -2,135 +2,203 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đặt vé - The Eras Tour</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/home.css" />
     <link rel="stylesheet" href="../assets/css/seat-map.css" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
   <body>
-    <header
-      style="
-        padding: 24px 0;
-        background: white;
-        border-bottom: 1px solid var(--border);
-      "
-    >
-      <div
-        class="container"
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        "
-      >
-        <h2
-          style="font-weight: 800; color: var(--primary); letter-spacing: -1px"
-        >
-          <i class="ph-fill ph-ticket"></i> FlashTicket.vn
-        </h2>
-        <nav>
-          <a href="login.html" class="btn btn-outline"
-            ><i class="ph ph-user"></i> Đăng nhập</a
-          >
-        </nav>
-      </div>
-    </header>
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="../index.html" class="logo">
+          <i
+            class="ph-fill ph-ticket"
+            style="color: var(--primary); font-size: 28px"
+          ></i>
+          FlashTicket
+        </a>
 
-    <main class="container" style="margin-top: 48px; display: flex; gap: 40px">
+        <div class="nav-links">
+          <a href="../index.html">Trang chủ</a>
+          <a href="#">Sự kiện</a>
+          <a href="#">Hỗ trợ</a>
+        </div>
+
+        <div class="auth-buttons">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              font-weight: 600;
+              font-size: 14px;
+            "
+          >
+            <img
+              src="https://ui-avatars.com/api/?name=User&background=6366f1&color=fff"
+              style="width: 32px; height: 32px; border-radius: 50%"
+            />
+            <span>Xin chào, Tuyên</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="event-header-section">
+      <div class="container event-header-grid">
+        <img
+          src="https://i0.wp.com/libertytheatrenc.com/wp-content/uploads/2023/09/2_Landscape-Hero-Art_16x9_3000.jpg?resize=1024%2C576&ssl=1"
+          alt="Event Thumb"
+          class="event-thumb"
+        />
+        <div class="event-info">
+          <h1>The Eras Tour - Taylor Swift</h1>
+          <div class="event-meta">
+            <span
+              ><i class="ph-fill ph-calendar-blank"></i> 15 Tháng 10, 2024 -
+              20:00</span
+            >
+            <span
+              ><i class="ph-fill ph-map-pin"></i> SVĐ Quốc gia Mỹ Đình, Hà
+              Nội</span
+            >
+            <span><i class="ph-fill ph-clock"></i> 180 phút</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="container booking-layout">
       <div class="seat-section">
-        <div class="stage">Sân khấu chính (Stage)</div>
+        <div class="stage">MÀN HÌNH / SÂN KHẤU</div>
 
         <div class="seat-grid">
           <div class="seat-row-label">A</div>
           <div class="seat" data-status="sold">1</div>
           <div class="seat" data-status="sold">2</div>
-          <div class="seat" data-status="selected">3</div>
-          <div class="seat">4</div>
-          <div class="seat">5</div>
-          <div class="seat">6</div>
-          <div class="seat" data-status="vip">7</div>
-          <div class="seat" data-status="vip">8</div>
+          <div class="seat" data-status="selected" onclick="toggleSeat(this)">
+            3
+          </div>
+          <div class="seat" onclick="toggleSeat(this)">4</div>
+          <div class="seat" onclick="toggleSeat(this)">5</div>
+          <div class="seat" onclick="toggleSeat(this)">6</div>
+          <div class="seat" data-status="vip" onclick="toggleSeat(this)">7</div>
+          <div class="seat" data-status="vip" onclick="toggleSeat(this)">8</div>
 
           <div class="seat-row-label">B</div>
-          <div class="seat">1</div>
-          <div class="seat">2</div>
-          <div class="seat">3</div>
-          <div class="seat">4</div>
+          <div class="seat" onclick="toggleSeat(this)">1</div>
+          <div class="seat" onclick="toggleSeat(this)">2</div>
+          <div class="seat" onclick="toggleSeat(this)">3</div>
+          <div class="seat" onclick="toggleSeat(this)">4</div>
           <div class="seat" data-status="sold">5</div>
           <div class="seat" data-status="sold">6</div>
-          <div class="seat">7</div>
-          <div class="seat">8</div>
+          <div class="seat" onclick="toggleSeat(this)">7</div>
+          <div class="seat" onclick="toggleSeat(this)">8</div>
+          <div class="seat-row-label">C</div>
+          <div class="seat" onclick="toggleSeat(this)">1</div>
+          <div class="seat" onclick="toggleSeat(this)">2</div>
+          <div class="seat" onclick="toggleSeat(this)">3</div>
+          <div class="seat" onclick="toggleSeat(this)">4</div>
+          <div class="seat" onclick="toggleSeat(this)">5</div>
+          <div class="seat" onclick="toggleSeat(this)">6</div>
+          <div class="seat" onclick="toggleSeat(this)">7</div>
+          <div class="seat" onclick="toggleSeat(this)">8</div>
         </div>
 
         <div class="legend">
           <div class="legend-item">
-            <i class="ph-fill ph-square" style="color: var(--bg-input)"></i>
+            <div class="dot available"></div>
             Trống
           </div>
           <div class="legend-item">
-            <i class="ph-fill ph-square" style="color: var(--primary)"></i> Đang
-            chọn
+            <div class="dot selected"></div>
+            Đang chọn
           </div>
           <div class="legend-item">
-            <i
-              class="ph-fill ph-square"
-              style="color: #f1f5f9; border: 1px solid #e2e8f0"
-            ></i>
+            <div class="dot sold"></div>
             Đã bán
           </div>
           <div class="legend-item">
-            <i class="ph-fill ph-square" style="color: var(--warning)"></i> VIP
+            <div class="dot vip"></div>
+            VIP
           </div>
         </div>
       </div>
 
-      <div class="booking-info">
-        <div class="card" style="padding: 0; overflow: hidden">
-          <img
-            src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=600&q=80"
-            alt="The Eras Tour"
-            style="width: 100%; height: 200px; object-fit: cover"
-          />
+      <aside class="booking-sidebar">
+        <div class="ticket-card">
+          <div class="ticket-header">THÔNG TIN ĐẶT VÉ</div>
 
-          <div class="card-body" style="padding: 24px">
-            <div class="booking-content">
-              <h3>Taylor Swift - The Eras Tour</h3>
-              <p class="text-muted">
-                <i class="ph-fill ph-map-pin"></i> SVĐ Quốc gia Mỹ Đình, Hà Nội
-              </p>
+          <div class="ticket-body">
+            <div class="summary-row">
+              <span class="text-secondary">Khu vực</span>
+              <strong>STAND A</strong>
+            </div>
+            <div class="summary-row">
+              <span class="text-secondary">Vị trí ghế</span>
+              <strong>A3</strong>
             </div>
 
             <div class="ticket-divider"></div>
 
-            <div class="ticket-summary">
-              <div class="summary-row">
-                <span class="label">Ghế đang chọn</span>
-                <span class="value">A3</span>
-              </div>
-              <div class="summary-row">
-                <span class="label">Loại ghế</span>
-                <span class="value">Phổ thông</span>
-              </div>
-              <div class="summary-row total">
-                <span class="label">Tổng cộng</span>
-                <span class="value">5.000.000 VNĐ</span>
-              </div>
+            <div class="summary-row">
+              <span class="text-secondary">Giá vé</span>
+              <span>5.000.000 ₫</span>
+            </div>
+            <div class="summary-row">
+              <span class="text-secondary">Phí tiện ích</span>
+              <span>20.000 ₫</span>
             </div>
 
-            <button
-              class="btn btn-primary"
+            <div class="summary-row total">
+              <span>TỔNG TIỀN</span>
+              <span style="color: var(--primary)">5.020.000 ₫</span>
+            </div>
+
+            <a
+              href="checkout.html"
+              class="btn btn-block"
               style="
-                width: 100%;
-                height: 52px;
                 margin-top: 24px;
-                font-size: 16px;
+                text-align: center;
+                justify-content: center;
               "
             >
-              Tiếp tục thanh toán (09:45)
-            </button>
+              Tiếp tục thanh toán <i class="ph-bold ph-arrow-right"></i>
+            </a>
+
+            <p
+              style="
+                text-align: center;
+                font-size: 13px;
+                color: var(--text-muted);
+                margin-top: 16px;
+              "
+            >
+              <i class="ph-fill ph-timer"></i> Vé được giữ trong 10:00 phút
+            </p>
           </div>
         </div>
-      </div>
+      </aside>
     </main>
+
+    <script>
+      function toggleSeat(element) {
+        // Nếu ghế đã bán thì không làm gì
+        if (element.getAttribute("data-status") === "sold") return;
+
+        // Nếu đang chọn thì bỏ chọn
+        if (element.getAttribute("data-status") === "selected") {
+          // Kiểm tra xem nó có phải VIP ko để trả về đúng trạng thái
+          // (Logic demo đơn giản, thực tế cần phức tạp hơn)
+          element.removeAttribute("data-status");
+        } else {
+          // Chọn ghế
+          element.setAttribute("data-status", "selected");
+        }
+      }
+    </script>
   </body>
 </html>
