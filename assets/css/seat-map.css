@@ -1,0 +1,104 @@
+.seat-section {
+    flex: 2;
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.booking-info {
+    flex: 1;
+}
+
+.stage {
+    background: #334155;
+    color: #94a3b8;
+    padding: 15px;
+    margin-bottom: 40px;
+    border-radius: 0 0 50% 50%; /* Tạo hình cong cho sân khấu */
+    letter-spacing: 2px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Grid sơ đồ ghế */
+.seat-grid {
+    display: grid;
+    grid-template-columns: 30px repeat(8, 1fr); /* Cột đầu là label hàng */
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.seat-row-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--text-muted);
+}
+
+.seat {
+    height: 40px;
+    background-color: var(--seat-available);
+    border-radius: 6px 6px 2px 2px; /* Hình dáng ghế */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.seat:hover {
+    filter: brightness(1.2);
+}
+
+/* Trạng thái ghế */
+.seat[data-status="selected"] {
+    background-color: var(--seat-selected);
+    color: #000;
+    box-shadow: 0 0 10px var(--seat-selected);
+}
+
+.seat[data-status="sold"] {
+    background-color: var(--seat-sold);
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.seat[data-status="vip"] {
+    border: 2px solid #ffd700;
+}
+
+/* Chú thích */
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.dot.available { background: var(--seat-available); }
+.dot.selected { background: var(--seat-selected); }
+.dot.sold { background: var(--seat-sold); }
+.dot.vip { border: 2px solid #ffd700; }
+
+.card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: var(--radius);
+}

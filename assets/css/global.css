@@ -1,0 +1,57 @@
+:root {
+    /* Color Palette - Cyberpunk/Ticketing Style */
+    --primary-color: #00f2ea;   /* Màu xanh neon nổi bật */
+    --secondary-color: #ff0050; /* Màu đỏ cho nút mua/hết vé */
+    --bg-dark: #0f172a;         /* Nền chính tối thẫm */
+    --bg-card: #1e293b;         /* Nền card */
+    --text-main: #f8fafc;       /* Chữ trắng */
+    --text-muted: #94a3b8;      /* Chữ xám */
+    --seat-available: #334155;
+    --seat-selected: #00f2ea;
+    --seat-sold: #ef4444;
+    
+    /* Spacing & Typography */
+    --font-family: 'Inter', sans-serif;
+    --radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-family);
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* Utility Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    padding: 10px 24px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 15px var(--primary-color);
+}
