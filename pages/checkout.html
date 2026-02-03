@@ -2,9 +2,218 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <title>Thanh toán</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh toán - FlashTicket</title>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <style>
+      .checkout-grid {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 40px;
+        margin-top: 48px;
+      }
+      .payment-method {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 20px;
+        border: 2px solid var(--border);
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-bottom: 16px;
+      }
+      .payment-method:hover {
+        border-color: var(--primary-light);
+        background: var(--bg-input);
+      }
+      .payment-method.active {
+        border-color: var(--primary);
+        background: #f5f3ff;
+      }
+      .checkout-title {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 32px;
+        letter-spacing: -0.5px;
+      }
+      .section-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Thanh toán đơn hàng</h1>
+    <header
+      style="
+        padding: 24px 0;
+        background: white;
+        border-bottom: 1px solid var(--border);
+      "
+    >
+      <div class="container">
+        <h2
+          style="font-weight: 800; color: var(--primary); letter-spacing: -1px"
+        >
+          FlashTicket.vn
+        </h2>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="checkout-grid">
+        <div class="payment-section">
+          <h1 class="checkout-title">Thanh toán</h1>
+
+          <div class="card" style="margin-bottom: 32px">
+            <h2 class="section-title">Thông tin giao hàng</h2>
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px"
+            >
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label">Họ và tên</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  value="Nguyễn Văn A"
+                  readonly
+                />
+              </div>
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label">Số điện thoại</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  value="0901234567"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="section-title">Phương thức thanh toán</h2>
+            <div class="payment-method active">
+              <input type="radio" checked />
+              <div style="flex: 1">
+                <div style="font-weight: 700">Ví điện tử MoMo / ZaloPay</div>
+                <div style="font-size: 13px; color: var(--text-muted)">
+                  Xử lý tức thì, bảo mật tuyệt đối
+                </div>
+              </div>
+            </div>
+            <div class="payment-method">
+              <input type="radio" />
+              <div style="flex: 1">
+                <div style="font-weight: 700">
+                  Thẻ nội địa NAPAS / Thẻ Quốc tế
+                </div>
+                <div style="font-size: 13px; color: var(--text-muted)">
+                  Visa, Mastercard, JCB
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <div class="card" style="position: sticky; top: 40px">
+            <h2 class="section-title">Đơn hàng của bạn</h2>
+            <div style="display: flex; gap: 16px; margin-bottom: 24px">
+              <img
+                src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=100&q=80"
+                style="
+                  width: 80px;
+                  height: 80px;
+                  object-fit: cover;
+                  border-radius: var(--radius-sm);
+                "
+              />
+              <div>
+                <div style="font-weight: 800; font-size: 15px">
+                  The Eras Tour - Taylor Swift
+                </div>
+                <div
+                  style="
+                    font-size: 13px;
+                    color: var(--text-muted);
+                    margin-top: 4px;
+                  "
+                >
+                  Khu vực: A3 • Số ghế: 03
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 24px;
+                padding-top: 24px;
+                border-top: 2px dashed var(--border);
+              "
+            >
+              <div style="display: flex; justify-content: space-between">
+                <span style="color: var(--text-secondary)">Giá vé</span>
+                <span style="font-weight: 700">5.000.000 VNĐ</span>
+              </div>
+              <div style="display: flex; justify-content: space-between">
+                <span style="color: var(--text-secondary)">Phí dịch vụ</span>
+                <span style="font-weight: 700">50.000 VNĐ</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 16px;
+                  padding-top: 16px;
+                  border-top: 1px solid var(--border);
+                "
+              >
+                <span style="font-weight: 800; font-size: 18px"
+                  >Tổng thanh toán</span
+                >
+                <span
+                  style="
+                    font-weight: 800;
+                    font-size: 18px;
+                    color: var(--primary);
+                  "
+                  >5.050.000 VNĐ</span
+                >
+              </div>
+            </div>
+
+            <button
+              class="btn btn-primary"
+              style="
+                width: 100%;
+                height: 56px;
+                margin-top: 32px;
+                font-size: 16px;
+              "
+            >
+              Thanh toán ngay
+            </button>
+            <p
+              style="
+                text-align: center;
+                font-size: 12px;
+                color: var(--text-muted);
+                margin-top: 16px;
+              "
+            >
+              Giao dịch được bảo mật bởi chuẩn PCI DSS
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

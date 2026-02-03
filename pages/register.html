@@ -1,50 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đăng ký - FlashTicket</title>
-    <link rel="stylesheet" href="../assets/css/global.css">
-    <link rel="stylesheet" href="../assets/css/auth.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+  </head>
+  <body class="auth-page">
     <div class="auth-wrapper">
-        <div class="auth-card">
-            <div class="auth-header">
-                <h2>Tạo tài khoản mới</h2>
-                <p>Khám phá hàng ngàn sự kiện hấp dẫn</p>
-            </div>
-
-            <form action="login.html">
-                <div class="form-group">
-                    <label class="form-label">Họ và tên</label>
-                    <input type="text" class="form-input" placeholder="Nguyễn Văn A" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-input" placeholder="name@example.com" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-input" placeholder="Ít nhất 8 ký tự" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="checkbox-wrapper" style="font-size: 13px;">
-                        <input type="checkbox" required> 
-                        <span>Tôi đồng ý với <a href="#">Điều khoản</a> và <a href="#">Chính sách</a></span>
-                    </label>
-                </div>
-
-                <button type="submit" class="btn-block">Đăng ký tài khoản</button>
-            </form>
-
-            <div class="auth-footer">
-                Đã có tài khoản? <a href="login.html">Đăng nhập</a>
-            </div>
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>Tạo tài khoản mới</h2>
+          <p>Khám phá hàng ngàn sự kiện hấp dẫn</p>
         </div>
+
+        <form action="login.html">
+          <div class="form-group">
+            <label class="form-label">Họ và tên</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Nguyễn Văn A"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-input"
+              placeholder="name@example.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mật khẩu</label>
+            <input
+              type="password"
+              class="form-input"
+              placeholder="Ít nhất 8 ký tự"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Xác nhận mật khẩu</label>
+            <input
+              type="password"
+              class="form-input"
+              placeholder="Xác nhận mật khẩu"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-wrapper" style="font-size: 13px">
+              <input type="checkbox" required />
+              <span
+                >Tôi đồng ý với <a href="#">Điều khoản</a> và
+                <a href="#">Chính sách</a></span
+              >
+            </label>
+          </div>
+
+          <button type="submit" class="btn-block">Đăng ký tài khoản</button>
+        </form>
+
+        <div class="auth-footer">
+          Đã có tài khoản? <a href="login.html">Đăng nhập</a>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

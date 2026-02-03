@@ -1,53 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đăng nhập - FlashTicket</title>
-    <link rel="stylesheet" href="../assets/css/global.css">
-    <link rel="stylesheet" href="../assets/css/auth.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+  </head>
+  <body class="auth-page">
     <div class="auth-wrapper">
-        <div class="auth-card">
-            <div class="auth-header">
-                <h2>Chào mừng trở lại</h2>
-                <p>Đăng nhập để săn vé ngay hôm nay</p>
-            </div>
-
-            <div class="social-login">
-                <button class="btn-social">
-                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
-                </button>
-                <button class="btn-social">
-                    <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook">
-                </button>
-            </div>
-
-            <form action="index.html"> <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-input" placeholder="name@example.com" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-input" placeholder="••••••••" required>
-                </div>
-
-                <div class="auth-options">
-                    <label class="checkbox-wrapper">
-                        <input type="checkbox"> Nhớ tài khoản
-                    </label>
-                    <a href="forgot-password.html">Quên mật khẩu?</a>
-                </div>
-
-                <button type="submit" class="btn-block">Đăng nhập</button>
-            </form>
-
-            <div class="auth-footer">
-                Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a>
-            </div>
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>Chào mừng trở lại</h2>
+          <p>Đăng nhập để săn vé ngay hôm nay</p>
         </div>
+
+        <div class="social-login">
+          <button class="btn-social">
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt="Google"
+            />
+            <span>Google</span>
+          </button>
+          <button class="btn-social">
+            <img
+              src="https://www.svgrepo.com/show/475647/facebook-color.svg"
+              alt="Facebook"
+            />
+            <span>Facebook</span>
+          </button>
+        </div>
+
+        <form action="index.html">
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-input"
+              placeholder="name@example.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mật khẩu</label>
+            <input
+              type="password"
+              class="form-input"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+
+          <div class="auth-options">
+            <label class="checkbox-wrapper">
+              <input type="checkbox" /> Nhớ tài khoản
+            </label>
+            <a href="forgot-password.html">Quên mật khẩu?</a>
+          </div>
+
+          <button type="submit" class="btn-block">Đăng nhập</button>
+        </form>
+
+        <div class="auth-footer">
+          Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
