@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thanh toán - FlashTicket</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
       .checkout-grid {
         display: grid;
@@ -59,7 +60,7 @@
         <h2
           style="font-weight: 800; color: var(--primary); letter-spacing: -1px"
         >
-          FlashTicket.vn
+          <i class="ph-fill ph-ticket"></i> FlashTicket.vn
         </h2>
       </div>
     </header>
@@ -70,7 +71,9 @@
           <h1 class="checkout-title">Thanh toán</h1>
 
           <div class="card" style="margin-bottom: 32px">
-            <h2 class="section-title">Thông tin giao hàng</h2>
+            <h2 class="section-title">
+              <i class="ph-bold ph-truck"></i> Thông tin giao hàng
+            </h2>
             <div
               style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px"
             >
@@ -96,9 +99,14 @@
           </div>
 
           <div class="card">
-            <h2 class="section-title">Phương thức thanh toán</h2>
+            <h2 class="section-title">
+              <i class="ph-bold ph-credit-card"></i> Phương thức thanh toán
+            </h2>
             <div class="payment-method active">
-              <input type="radio" checked />
+              <i
+                class="ph-fill ph-wallet"
+                style="font-size: 24px; color: var(--primary)"
+              ></i>
               <div style="flex: 1">
                 <div style="font-weight: 700">Ví điện tử MoMo / ZaloPay</div>
                 <div style="font-size: 13px; color: var(--text-muted)">
@@ -107,7 +115,10 @@
               </div>
             </div>
             <div class="payment-method">
-              <input type="radio" />
+              <i
+                class="ph ph-bank"
+                style="font-size: 24px; color: var(--text-muted)"
+              ></i>
               <div style="flex: 1">
                 <div style="font-weight: 700">
                   Thẻ nội địa NAPAS / Thẻ Quốc tế

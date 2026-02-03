@@ -1,9 +1,4 @@
-/* Body centering for Auth pages */
-body.auth-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* Body centering logic moved to global.css (.body-center) */
 
 /* Container chính: Card ở giữa màn hình */
 .auth-wrapper {
@@ -194,4 +189,32 @@ body.auth-page {
 
 .auth-divider span {
   padding: 0 16px;
+}
+
+/* Wrapper để giữ icon và input */
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Định vị icon nằm đè lên bên trái input */
+.input-with-icon i {
+  position: absolute;
+  left: 14px;
+  font-size: 20px;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+/* Đẩy text trong input sang phải để không đè lên icon */
+.input-with-icon .form-input {
+  padding-left: 46px;
+}
+
+/* Khi input được focus, đổi màu icon */
+.input-with-icon .form-input:focus + i,
+.input-with-icon:focus-within i {
+  color: var(--primary);
 }

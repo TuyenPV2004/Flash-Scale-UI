@@ -6,8 +6,9 @@
     <title>Đăng ký - FlashTicket</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
     <link rel="stylesheet" href="../assets/css/auth.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
-  <body class="auth-page">
+  <body class="body-center">
     <div class="auth-wrapper">
       <div class="auth-card">
         <div class="auth-header">
@@ -15,45 +16,74 @@
           <p>Khám phá hàng ngàn sự kiện hấp dẫn</p>
         </div>
 
+        <div class="social-login">
+          <button class="btn-social">
+            <i
+              class="ph-fill ph-google-logo"
+              style="color: #db4437; font-size: 20px"
+            ></i>
+            <span>Google</span>
+          </button>
+          <button class="btn-social">
+            <i
+              class="ph-fill ph-facebook-logo"
+              style="color: #4267b2; font-size: 20px"
+            ></i>
+            <span>Facebook</span>
+          </button>
+        </div>
+
         <form action="login.html">
           <div class="form-group">
             <label class="form-label">Họ và tên</label>
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Nguyễn Văn A"
-              required
-            />
+            <div class="input-with-icon">
+              <i class="ph-bold ph-user"></i>
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Nguyễn Văn A"
+                required
+              />
+            </div>
           </div>
 
           <div class="form-group">
             <label class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-input"
-              placeholder="name@example.com"
-              required
-            />
+            <div class="input-with-icon">
+              <i class="ph-bold ph-envelope-simple"></i>
+              <input
+                type="email"
+                class="form-input"
+                placeholder="name@example.com"
+                required
+              />
+            </div>
           </div>
 
           <div class="form-group">
             <label class="form-label">Mật khẩu</label>
-            <input
-              type="password"
-              class="form-input"
-              placeholder="Ít nhất 8 ký tự"
-              required
-            />
+            <div class="input-with-icon">
+              <i class="ph-bold ph-lock-key"></i>
+              <input
+                type="password"
+                class="form-input"
+                placeholder="Ít nhất 8 ký tự"
+                required
+              />
+            </div>
           </div>
 
           <div class="form-group">
             <label class="form-label">Xác nhận mật khẩu</label>
-            <input
-              type="password"
-              class="form-input"
-              placeholder="Xác nhận mật khẩu"
-              required
-            />
+            <div class="input-with-icon">
+              <i class="ph-bold ph-lock-key"></i>
+              <input
+                type="password"
+                class="form-input"
+                placeholder="Xác nhận mật khẩu"
+                required
+              />
+            </div>
           </div>
 
           <div class="form-group">

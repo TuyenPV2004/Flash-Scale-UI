@@ -6,8 +6,9 @@
     <title>Đăng nhập - FlashTicket</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
     <link rel="stylesheet" href="../assets/css/auth.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
-  <body class="auth-page">
+  <body class="body-center">
     <div class="auth-wrapper">
       <div class="auth-card">
         <div class="auth-header">
@@ -17,17 +18,17 @@
 
         <div class="social-login">
           <button class="btn-social">
-            <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              alt="Google"
-            />
+            <i
+              class="ph-fill ph-google-logo"
+              style="color: #db4437; font-size: 20px"
+            ></i>
             <span>Google</span>
           </button>
           <button class="btn-social">
-            <img
-              src="https://www.svgrepo.com/show/475647/facebook-color.svg"
-              alt="Facebook"
-            />
+            <i
+              class="ph-fill ph-facebook-logo"
+              style="color: #4267b2; font-size: 20px"
+            ></i>
             <span>Facebook</span>
           </button>
         </div>
@@ -35,22 +36,28 @@
         <form action="index.html">
           <div class="form-group">
             <label class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-input"
-              placeholder="name@example.com"
-              required
-            />
+            <div class="input-with-icon">
+              <i class="ph-bold ph-envelope-simple"></i>
+              <input
+                type="email"
+                class="form-input"
+                placeholder="name@example.com"
+                required
+              />
+            </div>
           </div>
 
           <div class="form-group">
             <label class="form-label">Mật khẩu</label>
-            <input
-              type="password"
-              class="form-input"
-              placeholder="••••••••"
-              required
-            />
+            <div class="input-with-icon">
+              <i class="ph-bold ph-lock-key"></i>
+              <input
+                type="password"
+                class="form-input"
+                placeholder="••••••••"
+                required
+              />
+            </div>
           </div>
 
           <div class="auth-options">

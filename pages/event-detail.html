@@ -5,6 +5,7 @@
     <title>Đặt vé - The Eras Tour</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
     <link rel="stylesheet" href="../assets/css/seat-map.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
   <body>
     <header
@@ -25,10 +26,12 @@
         <h2
           style="font-weight: 800; color: var(--primary); letter-spacing: -1px"
         >
-          FlashTicket.vn
+          <i class="ph-fill ph-ticket"></i> FlashTicket.vn
         </h2>
         <nav>
-          <a href="login.html" class="btn btn-outline">Đăng nhập</a>
+          <a href="login.html" class="btn btn-outline"
+            ><i class="ph ph-user"></i> Đăng nhập</a
+          >
         </nav>
       </div>
     </header>
@@ -61,13 +64,23 @@
 
         <div class="legend">
           <div class="legend-item">
-            <span class="dot available"></span>Trống
+            <i class="ph-fill ph-square" style="color: var(--bg-input)"></i>
+            Trống
           </div>
           <div class="legend-item">
-            <span class="dot selected"></span>Đang chọn
+            <i class="ph-fill ph-square" style="color: var(--primary)"></i> Đang
+            chọn
           </div>
-          <div class="legend-item"><span class="dot sold"></span>Đã bán</div>
-          <div class="legend-item"><span class="dot vip"></span>VIP</div>
+          <div class="legend-item">
+            <i
+              class="ph-fill ph-square"
+              style="color: #f1f5f9; border: 1px solid #e2e8f0"
+            ></i>
+            Đã bán
+          </div>
+          <div class="legend-item">
+            <i class="ph-fill ph-square" style="color: var(--warning)"></i> VIP
+          </div>
         </div>
       </div>
 
@@ -82,7 +95,9 @@
           <div class="card-body" style="padding: 24px">
             <div class="booking-content">
               <h3>Taylor Swift - The Eras Tour</h3>
-              <p class="text-muted">SVĐ Quốc gia Mỹ Đình, Hà Nội</p>
+              <p class="text-muted">
+                <i class="ph-fill ph-map-pin"></i> SVĐ Quốc gia Mỹ Đình, Hà Nội
+              </p>
             </div>
 
             <div class="ticket-divider"></div>
