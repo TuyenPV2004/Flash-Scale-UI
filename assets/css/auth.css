@@ -1,4 +1,12 @@
 /* Body centering logic moved to global.css (.body-center) */
+body {
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
+  background-attachment: fixed; /* Ensures gradient covers full height cleanly */
+}
 
 /* Container chính: Card ở giữa màn hình */
 .auth-wrapper {
@@ -9,16 +17,16 @@
 
 .auth-card {
   background: var(--bg-card);
-  padding: 48px 40px;
+  padding: 32px 32px;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-xl);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
   border: 1px solid var(--border);
   text-align: center;
 }
 
 /* Header: Logo và Tiêu đề */
 .auth-header {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .auth-header h2 {
@@ -36,7 +44,7 @@
 
 /* Form Elements */
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   text-align: left;
 }
 
@@ -120,7 +128,7 @@
 }
 
 .auth-footer {
-  margin-top: 32px;
+  margin-top: 24px;
   padding-top: 0;
   font-size: 14px;
   color: var(--text-secondary);
@@ -135,7 +143,7 @@
 .social-login {
   display: flex;
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .btn-social {
