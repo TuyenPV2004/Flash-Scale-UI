@@ -1,0 +1,208 @@
+/* --- BIẾN MÀU SẮC RIÊNG CHO TRANG NÀY (Xanh Neon Theme) --- */
+:root {
+  --neon-green: #10b981;
+  --neon-green-hover: #059669;
+  --bg-page: #ffffff;
+  --bg-ticket-info: #f8fafc; /* Subtle gray background for ticket info */
+  --bg-panel: #ffffff;
+  --text-white: #0f172a;
+  --text-gray: #475569;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-white);
+}
+
+/* --- 1. HERO SECTION: TICKET STUB METAPHOR --- */
+.ticket-hero-container {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.08));
+}
+
+.ticket-stub {
+  display: flex;
+  height: 450px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+/* Phần TRÁI: Thông tin (40%) */
+.ticket-left {
+  flex: 0 0 40%;
+  background-color: var(--bg-ticket-info);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border-right: 2px dashed var(--border);
+}
+
+/* Phần PHẢI: Hình ảnh Poster (60%) */
+.ticket-right {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* --- KỸ THUẬT TẠO VẾT KHUYẾT (SEMICIRCLES) --- */
+.ticket-stub::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 40%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.ticket-stub::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 40%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+/* Nội dung bên trong phần trái */
+.event-title-hero {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.event-meta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.meta-icon {
+  font-size: 24px;
+  color: var(--primary);
+  margin-top: 2px;
+}
+
+.meta-text strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.meta-text span {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.ticket-price-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.ticket-price-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.btn-buy-ticket {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.btn-buy-ticket:hover {
+  background-color: var(--primary-dark);
+}
+
+/* --- 2. BODY LAYOUT (Asymmetrical) --- */
+.description-text {
+  color: var(--text-secondary);
+}
+
+.ticket-list-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+}
+
+.date-pill {
+  background: #f1f5f9;
+  color: var(--text-secondary);
+}
+.date-pill.active {
+  background: var(--primary);
+}
+
+.ticket-item {
+  border-bottom: 1px solid var(--border);
+}
+.ticket-item:hover {
+  background-color: #f8fafc;
+}
+
+.ticket-price {
+  color: var(--primary);
+}
+
+.organizer-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+}
+
+.mini-card p {
+  color: var(--primary);
+}
+
+/* Suggestion Grid fixes */
+.suggestion-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.mini-card h4 {
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .ticket-stub {
+    flex-direction: column;
+    height: auto;
+    border: 1px solid var(--border);
+  }
+  /* Ensure borders are correct in mobile stacked view */
+  .ticket-left {
+    border-right: none;
+    border-bottom: 2px dashed var(--border);
+  }
+}
