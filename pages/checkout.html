@@ -5,226 +5,372 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thanh toán - FlashTicket</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/checkout.css" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <style>
-      .checkout-grid {
-        display: grid;
-        grid-template-columns: 1fr 400px;
-        gap: 40px;
-        margin-top: 48px;
-      }
-      .payment-method {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding: 20px;
-        border: 2px solid var(--border);
-        border-radius: var(--radius-md);
-        cursor: pointer;
-        transition: all 0.2s ease;
-        margin-bottom: 16px;
-      }
-      .payment-method:hover {
-        border-color: var(--primary-light);
-        background: var(--bg-input);
-      }
-      .payment-method.active {
-        border-color: var(--primary);
-        background: #f5f3ff;
-      }
-      .checkout-title {
-        font-size: 28px;
-        font-weight: 800;
-        margin-bottom: 32px;
-        letter-spacing: -0.5px;
-      }
-      .section-title {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-    </style>
   </head>
   <body>
-    <header
-      style="
-        padding: 24px 0;
-        background: white;
-        border-bottom: 1px solid var(--border);
-      "
+    <nav
+      class="navbar"
+      style="background: #111; border-bottom: 1px solid #333; padding: 15px 0"
     >
-      <div class="container">
-        <h2
-          style="font-weight: 800; color: var(--primary); letter-spacing: -1px"
+      <div
+        class="container"
+        style="display: flex; align-items: center; gap: 10px"
+      >
+        <span
+          style="
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: default;
+          "
         >
-          <i class="ph-fill ph-ticket"></i> FlashTicket.vn
-        </h2>
+          FlashTicket
+        </span>
       </div>
-    </header>
+    </nav>
+
+    <div class="checkout-header-wrapper">
+      <div class="container checkout-context">
+        <div class="event-brief">
+          <h2>[The Grand Ho Tram] Stay & Concert: HỒ NGỌC HÀ</h2>
+          <p>
+            <i class="ph-fill ph-calendar-blank"></i> 07/02/2026 - 20:00
+            <span style="margin: 0 8px">|</span>
+            <i class="ph-fill ph-map-pin"></i> Ấp Hồ Tràm, Xã Hồ Tràm, Thành phố Hồ Chí Minh
+          </p>
+        </div>
+        <div class="countdown-box">
+          <i class="ph-bold ph-timer"></i> <span id="timer">14:44</span>
+        </div>
+      </div>
+    </div>
 
     <main class="container">
       <div class="checkout-grid">
-        <div class="payment-section">
-          <h1 class="checkout-title">Thanh toán</h1>
-
-          <div class="card" style="margin-bottom: 32px">
-            <h2 class="section-title">
-              <i class="ph-bold ph-truck"></i> Thông tin giao hàng
-            </h2>
-            <div
-              style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px"
-            >
-              <div class="form-group" style="margin-bottom: 0">
-                <label class="form-label">Họ và tên</label>
-                <input
-                  type="text"
-                  class="form-input"
-                  value="Nguyễn Văn A"
-                  readonly
-                />
-              </div>
-              <div class="form-group" style="margin-bottom: 0">
-                <label class="form-label">Số điện thoại</label>
-                <input
-                  type="text"
-                  class="form-input"
-                  value="0901234567"
-                  readonly
-                />
+        <div class="col-left">
+          <div class="info-card">
+            <h3 class="section-title">
+              <i class="ph-fill ph-envelope-simple"></i> Thông tin nhận vé
+            </h3>
+            <div class="eticket-notice">
+              <i class="ph-fill ph-info" style="font-size: 24px"></i>
+              <div>
+                Vé điện tử sẽ được gửi về email
+                <strong>tuvan@example.com</strong> và lưu trong mục
+                <strong>Vé của tôi</strong>. <br />Vui lòng kiểm tra kỹ email
+                trước khi thanh toán.
               </div>
             </div>
           </div>
 
-          <div class="card">
-            <h2 class="section-title">
-              <i class="ph-bold ph-credit-card"></i> Phương thức thanh toán
-            </h2>
-            <div class="payment-method active">
-              <i
-                class="ph-fill ph-wallet"
-                style="font-size: 24px; color: var(--primary)"
-              ></i>
-              <div style="flex: 1">
-                <div style="font-weight: 700">Ví điện tử MoMo / ZaloPay</div>
-                <div style="font-size: 13px; color: var(--text-muted)">
-                  Xử lý tức thì, bảo mật tuyệt đối
-                </div>
-              </div>
+          <div class="info-card">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 16px;
+              "
+            >
+              <h3 class="section-title" style="margin-bottom: 0">
+                <i class="ph-fill ph-tag"></i> Mã khuyến mãi
+              </h3>
+              <button class="btn-select-voucher" onclick="openVoucherModal()">
+                Chọn voucher
+              </button>
             </div>
-            <div class="payment-method">
-              <i
-                class="ph ph-bank"
-                style="font-size: 24px; color: var(--text-muted)"
-              ></i>
-              <div style="flex: 1">
-                <div style="font-weight: 700">
-                  Thẻ nội địa NAPAS / Thẻ Quốc tế
+            <div class="voucher-group">
+              <input
+                type="text"
+                id="voucherInput"
+                class="voucher-input"
+                placeholder="Nhập mã giảm giá"
+              />
+              <button class="btn-apply">Áp dụng</button>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3 class="section-title">
+              <i class="ph-fill ph-credit-card"></i> Phương thức thanh toán
+            </h3>
+            <div class="payment-list">
+              <div class="payment-item active" onclick="selectPayment(this)">
+                <div class="payment-label">
+                  <img
+                    src="https://vnpay.vn/assets/images/logo-icon/logo-primary.svg"
+                    class="payment-logo"
+                  />
+                  VNPAY
                 </div>
-                <div style="font-size: 13px; color: var(--text-muted)">
-                  Visa, Mastercard, JCB
+                <div class="custom-radio"></div>
+              </div>
+
+              <div class="payment-item" onclick="selectPayment(this)">
+                <div class="payment-label">
+                  <img
+                    src="https://homepage.momocdn.net/fileuploads/svg/momo-file-240411162904.svg"
+                    class="payment-logo"
+                  />
+                  MoMo
                 </div>
+                <div class="custom-radio"></div>
+              </div>
+
+              <div class="payment-item" onclick="selectPayment(this)">
+                <div class="payment-label">
+                  <img
+                    src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-ZaloPay-Square.png"
+                    class="payment-logo"
+                  />
+                  ZaloPay
+                </div>
+                <div class="custom-radio"></div>
+              </div>
+
+              <div class="payment-item" onclick="selectPayment(this)">
+                <div class="payment-label">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png"
+                    class="payment-logo"
+                  />
+                  Thẻ quốc tế
+                </div>
+                <div class="custom-radio"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="order-summary">
-          <div class="card" style="position: sticky; top: 40px">
-            <h2 class="section-title">Đơn hàng của bạn</h2>
-            <div style="display: flex; gap: 16px; margin-bottom: 24px">
-              <img
-                src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=100&q=80"
-                style="
-                  width: 80px;
-                  height: 80px;
-                  object-fit: cover;
-                  border-radius: var(--radius-sm);
-                "
-              />
-              <div>
-                <div style="font-weight: 800; font-size: 15px">
-                  The Eras Tour - Taylor Swift
-                </div>
-                <div
-                  style="
-                    font-size: 13px;
-                    color: var(--text-muted);
-                    margin-top: 4px;
-                  "
-                >
-                  Khu vực: A3 • Số ghế: 03
-                </div>
+        <div class="col-right">
+          <div class="summary-card">
+            <div class="summary-header">
+              <h3 style="font-size: 18px; font-weight: 700">
+                Thông tin đặt vé
+              </h3>
+              <div class="btn-reselect" onclick="openConfirmModal()">
+                Chọn lại vé
               </div>
             </div>
 
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-                margin-top: 24px;
-                padding-top: 24px;
-                border-top: 2px dashed var(--border);
-              "
-            >
-              <div style="display: flex; justify-content: space-between">
-                <span style="color: var(--text-secondary)">Giá vé</span>
-                <span style="font-weight: 700">5.000.000 VNĐ</span>
+            <div class="ticket-item-mini">
+              <div class="ticket-detail-row">
+                <strong>Vé tiêu chuẩn</strong>
+                <span style="font-weight: 700">3.500.000 ₫</span>
               </div>
-              <div style="display: flex; justify-content: space-between">
-                <span style="color: var(--text-secondary)">Phí dịch vụ</span>
-                <span style="font-weight: 700">50.000 VNĐ</span>
+              <div class="ticket-detail-row" style="color: #64748b">
+                <span>Ghế: <strong>C5</strong></span>
+                <span>01</span>
               </div>
-              <div
+            </div>
+
+            <div class="ticket-item-mini">
+              <div class="ticket-detail-row">
+                <strong>Vé VIP</strong>
+                <span style="font-weight: 700">5.000.000 ₫</span>
+              </div>
+              <div class="ticket-detail-row" style="color: #64748b">
+                <span>Ghế: <strong>A1</strong></span>
+                <span>01</span>
+              </div>
+            </div>
+
+            <div class="summary-footer">
+              <div class="price-row">
+                <span>Tạm tính</span>
+                <span>8.500.000 ₫</span>
+              </div>
+              <div class="price-row">
+                <span>Phí dịch vụ</span>
+                <span>0 ₫</span>
+              </div>
+              <div class="price-row">
+                <span>Giảm giá</span>
+                <span>-0 ₫</span>
+              </div>
+
+              <div class="total-row">
+                <span style="font-weight: 700; font-size: 16px">Tổng tiền</span>
+                <span class="total-price">8.500.000 ₫</span>
+              </div>
+
+              <button
+                class="btn-checkout"
+                onclick="alert('Xử lý thanh toán...')"
+              >
+                THANH TOÁN
+              </button>
+
+              <p
                 style="
-                  display: flex;
-                  justify-content: space-between;
-                  margin-top: 16px;
-                  padding-top: 16px;
-                  border-top: 1px solid var(--border);
+                  text-align: center;
+                  font-size: 12px;
+                  color: #94a3b8;
+                  margin-top: 12px;
                 "
               >
-                <span style="font-weight: 800; font-size: 18px"
-                  >Tổng thanh toán</span
-                >
-                <span
-                  style="
-                    font-weight: 800;
-                    font-size: 18px;
-                    color: var(--primary);
-                  "
-                  >5.050.000 VNĐ</span
-                >
-              </div>
+                Bằng việc thanh toán, bạn đồng ý với
+                <a href="#" style="color: var(--primary)">Điều khoản sử dụng</a>
+              </p>
             </div>
-
-            <button
-              class="btn btn-primary"
-              style="
-                width: 100%;
-                height: 56px;
-                margin-top: 32px;
-                font-size: 16px;
-              "
-            >
-              Thanh toán ngay
-            </button>
-            <p
-              style="
-                text-align: center;
-                font-size: 12px;
-                color: var(--text-muted);
-                margin-top: 16px;
-              "
-            >
-              Giao dịch được bảo mật bởi chuẩn PCI DSS
-            </p>
           </div>
         </div>
       </div>
     </main>
+
+    <!-- Modal Xác nhận Hủy đơn hàng -->
+    <div id="confirmModal" class="modal-overlay">
+      <div class="modal-content confirm-modal">
+        <h3 class="modal-title">Hủy đơn hàng?</h3>
+        <p class="modal-message">
+          Bạn có chắc chắn muốn tiếp tục?<br />
+          Bạn sẽ mất vị trí mình đã lựa chọn.<br />
+          Đơn hàng đang trong quá trình thanh toán hoặc đã thanh toán thành công
+          cũng có thể bị huỷ.
+        </p>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="closeConfirmModal()">
+            Ở lại
+          </button>
+          <button class="btn-danger" onclick="confirmReselect()">Hủy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Chọn Voucher -->
+    <div id="voucherModal" class="modal-overlay">
+      <div class="modal-content voucher-modal">
+        <div class="modal-header">
+          <h3>Chọn Voucher</h3>
+          <button class="btn-close" onclick="closeVoucherModal()">
+            <i class="ph ph-x"></i>
+          </button>
+        </div>
+        <div class="voucher-list">
+          <!-- Slide Voucher -->
+          <div class="voucher-ticket" onclick="selectVoucher(this, 'VC10')">
+            <div class="voucher-left">
+              <div class="partner-logo">
+                <img
+                  src="../assets/images/logo.png"
+                  alt="Logo"
+                  onerror="this.src = 'https://placehold.co/40x40?text=Logo'"
+                />
+              </div>
+            </div>
+            <div class="voucher-right">
+              <div class="voucher-info">
+                <div class="voucher-value">Giảm 10%</div>
+                <div class="voucher-condition">Đơn tối thiểu 500k</div>
+                <div class="voucher-expiry">HSD: 31/12/2026</div>
+              </div>
+              <div class="voucher-radio">
+                <input type="radio" name="voucher" value="VC10" />
+              </div>
+            </div>
+          </div>
+
+          <div class="voucher-ticket" onclick="selectVoucher(this, 'SALE50')">
+            <div class="voucher-left">
+              <div class="partner-logo">
+                <img
+                  src="../assets/images/logo.png"
+                  alt="Logo"
+                  onerror="this.src = 'https://placehold.co/40x40?text=Logo'"
+                />
+              </div>
+            </div>
+            <div class="voucher-right">
+              <div class="voucher-info">
+                <div class="voucher-value">Giảm 50k</div>
+                <div class="voucher-condition">Đơn tối thiểu 1tr</div>
+                <div class="voucher-expiry">HSD: 15/10/2026</div>
+              </div>
+              <div class="voucher-radio">
+                <input type="radio" name="voucher" value="SALE50" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" onclick="closeVoucherModal()">
+            Huỷ bỏ
+          </button>
+          <button class="btn-primary" onclick="applySelectedVoucher()">
+            Xong
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 1. Đếm ngược
+      function startTimer(duration, display) {
+        let timer = duration,
+          minutes,
+          seconds;
+        setInterval(function () {
+          minutes = parseInt(timer / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+          display.textContent = minutes + ":" + seconds;
+          if (--timer < 0) timer = 0;
+        }, 1000);
+      }
+
+      window.onload = function () {
+        startTimer(60 * 15, document.querySelector("#timer")); // 15 phút
+      };
+
+      // 2. Chọn phương thức thanh toán
+      function selectPayment(element) {
+        document
+          .querySelectorAll(".payment-item")
+          .forEach((el) => el.classList.remove("active"));
+        element.classList.add("active");
+      }
+
+      // 3. Modals
+      function openConfirmModal() {
+        document.getElementById("confirmModal").classList.add("active");
+      }
+      function closeConfirmModal() {
+        document.getElementById("confirmModal").classList.remove("active");
+      }
+      function confirmReselect() {
+        window.location.href = "seat-selection.html";
+      }
+
+      function openVoucherModal() {
+        document.getElementById("voucherModal").classList.add("active");
+      }
+      function closeVoucherModal() {
+        document.getElementById("voucherModal").classList.remove("active");
+      }
+
+      let selectedVoucherCode = "";
+      function selectVoucher(element, code) {
+        document
+          .querySelectorAll(".voucher-ticket")
+          .forEach((el) => el.classList.remove("selected"));
+        element.classList.add("selected");
+        element.querySelector('input[type="radio"]').checked = true;
+        selectedVoucherCode = code;
+      }
+
+      function applySelectedVoucher() {
+        if (selectedVoucherCode) {
+          document.getElementById("voucherInput").value = selectedVoucherCode;
+          closeVoucherModal();
+        } else {
+          closeVoucherModal();
+        }
+      }
+    </script>
   </body>
 </html>
