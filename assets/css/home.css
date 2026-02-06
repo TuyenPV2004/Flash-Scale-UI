@@ -54,9 +54,111 @@
 }
 
 .nav-actions {
+  gap: 16px;
+}
+
+/* --- Account Dropdown --- */
+.account-dropdown {
+  position: relative;
+}
+
+.account-trigger {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  transition: background 0.2s;
+}
+
+.account-trigger:hover {
+  background: var(--bg-main);
+}
+
+.nav-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.nav-account-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.account-trigger i {
+  font-size: 16px;
+  color: var(--text-secondary);
+  transition: transform 0.2s;
+}
+
+.account-dropdown:hover .account-trigger i {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 220px;
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+  z-index: 1000;
+}
+
+.account-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-main);
+  color: var(--primary);
+}
+
+.dropdown-item.active {
+  background: rgba(99, 102, 241, 0.05);
+  color: var(--primary);
+}
+
+.dropdown-item i {
+  font-size: 18px;
+}
+
+.dropdown-menu hr {
+  margin: 8px 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.dropdown-item.logout {
+  color: var(--error);
+}
+
+.dropdown-item.logout:hover {
+  background: rgba(239, 68, 68, 0.05);
 }
 
 /* --- 2. Hero Section (Carousel) --- */
