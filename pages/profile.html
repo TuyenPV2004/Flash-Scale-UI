@@ -67,7 +67,7 @@
             />
             <div class="user-info-text">
               <span class="label">Tài khoản của</span>
-              <span class="name">Tú Văn</span>
+              <span class="name">Phạm Văn Tuyến</span>
             </div>
           </div>
 
@@ -75,6 +75,11 @@
             <li>
               <a href="#" class="menu-link active">
                 <i class="ph-bold ph-user"></i> Thông tin tài khoản
+              </a>
+            </li>
+            <li>
+              <a href="#" class="menu-link">
+                <i class="ph-bold ph-pencil-simple"></i> Chỉnh sửa thông tin
               </a>
             </li>
             <li>
@@ -399,6 +404,130 @@
               </div>
             </div>
           </div>
+
+          <!-- Edit Profile Section (Hidden by default) -->
+          <div id="edit-profile-tab-content" class="hidden">
+            <div class="form-header">
+              <h1 class="form-title">Chỉnh sửa thông tin</h1>
+            </div>
+
+            <form>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Họ và tên</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Nguyễn Tú Văn"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Số điện thoại</label>
+                  <input type="text" class="form-control" value="0901234567" />
+                </div>
+
+                <div class="form-group">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="tuvan@example.com"
+                    disabled
+                    style="background: #f3f4f6"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Mật khẩu hiện tại</label>
+                  <div
+                    class="password-input-wrapper"
+                    style="position: relative"
+                  >
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Nhập mật khẩu hiện tại"
+                    />
+                    <i
+                      class="ph ph-eye-slash toggle-password"
+                      style="
+                        position: absolute;
+                        right: 12px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                        color: #9ca3af;
+                      "
+                    ></i>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Mật khẩu mới</label>
+                  <div
+                    class="password-input-wrapper"
+                    style="position: relative"
+                  >
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Nhập mật khẩu mới"
+                    />
+                    <i
+                      class="ph ph-eye-slash toggle-password"
+                      style="
+                        position: absolute;
+                        right: 12px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                        color: #9ca3af;
+                      "
+                    ></i>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Xác nhận mật khẩu mới</label>
+                  <div
+                    class="password-input-wrapper"
+                    style="position: relative"
+                  >
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Nhập lại mật khẩu mới"
+                    />
+                    <i
+                      class="ph ph-eye-slash toggle-password"
+                      style="
+                        position: absolute;
+                        right: 12px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                        color: #9ca3af;
+                      "
+                    ></i>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="
+                    width: 100%;
+                    margin-top: 20px;
+                    height: 48px;
+                    font-size: 16px;
+                    grid-column: 1 / -1;
+                  "
+                >
+                  Lưu thay đổi
+                </button>
+              </div>
+            </form>
+          </div>
         </main>
       </div>
     </div>
@@ -660,6 +789,10 @@
         );
         const favContent = document.getElementById("favorite-tab-content");
 
+        const editProfileContent = document.getElementById(
+          "edit-profile-tab-content",
+        );
+
         menuLinks.forEach((link, index) => {
           link.addEventListener("click", (e) => {
             e.preventDefault();
@@ -670,6 +803,7 @@
 
             // Hide all first
             accountContent.classList.add("hidden");
+            if (editProfileContent) editProfileContent.classList.add("hidden");
             ticketContent.classList.add("hidden");
             if (notifContent) notifContent.classList.add("hidden");
             if (favContent) favContent.classList.add("hidden");
@@ -679,12 +813,16 @@
               // Account
               accountContent.classList.remove("hidden");
             } else if (index === 1) {
+              // Edit Profile
+              if (editProfileContent)
+                editProfileContent.classList.remove("hidden");
+            } else if (index === 2) {
               // Tickets
               ticketContent.classList.remove("hidden");
-            } else if (index === 2) {
+            } else if (index === 3) {
               // Favorite
               if (favContent) favContent.classList.remove("hidden");
-            } else if (index === 3) {
+            } else if (index === 4) {
               // Notification
               if (notifContent) notifContent.classList.remove("hidden");
             }
@@ -718,6 +856,22 @@
           btn.addEventListener("click", () => {
             subTabBtns.forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
+          });
+        });
+
+        // Password Toggle Logic
+        const togglePasswordBtns =
+          document.querySelectorAll(".toggle-password");
+        togglePasswordBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const input = btn.previousElementSibling;
+            if (input.type === "password") {
+              input.type = "text";
+              btn.classList.replace("ph-eye-slash", "ph-eye");
+            } else {
+              input.type = "password";
+              btn.classList.replace("ph-eye", "ph-eye-slash");
+            }
           });
         });
       });
