@@ -1,16 +1,15 @@
-/* --- BIẾN MÀU SẮC RIÊNG CHO TRANG SEAT SELECTION --- */
 :root {
-  --bg-dark: #111111;
-  --bg-map: #1c1c1e;
-  --bg-sidebar: #252525;
-  --seat-available: #ffffff;
+  --bg-dark: #f9fafb;
+  --bg-map: #ffffff;
+  --bg-sidebar: #ffffff;
+  --seat-available: #e5e7eb;
   --seat-selected: #00ba51;
   --seat-sold: #ef4444;
   --zone-a: #facc15; /* Vàng chanh */
   --zone-b: #d946ef; /* Hồng tím */
-  --text-white: #ffffff;
-  --text-gray: #a0a0a0;
-  --border: #333333;
+  --text-white: #111827; /* Dark text for light mode */
+  --text-gray: #6b7280;
+  --border: #e5e7eb;
 }
 
 body {
@@ -23,10 +22,10 @@ body {
 /* --- HEADER: TOP NAVIGATION --- */
 .header-nav {
   height: 70px;
-  background: #1c1c1e;
+  background: #ffffff;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border);
 }
 
 .header-map-section {
@@ -145,7 +144,11 @@ body {
 .stage-area {
   width: 600px;
   height: 120px;
-  background: linear-gradient(180deg, #444 0%, #333 100%);
+  background: linear-gradient(
+    180deg,
+    #2dc275 0%,
+    #1e8a52 100%
+  ); /* Green Gradient */
   border-radius: 0 0 50% 50%; /* Hình oval/bán nguyệt */
   margin-bottom: 60px;
   display: flex;
@@ -153,10 +156,10 @@ body {
   justify-content: center;
   font-size: 24px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   letter-spacing: 4px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  border-top: 4px solid var(--seat-selected); /* Điểm nhấn sân khấu */
+  box-shadow: 0 20px 50px rgba(45, 194, 117, 0.3);
+  border-top: 4px solid #1e8a52; /* Darker green border */
 }
 
 /* Grid ghế */
@@ -209,7 +212,7 @@ body {
   border-radius: 20px;
   margin-bottom: 30px; /* Giảm từ 40px xuống 30px */
   position: relative;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.02);
   transition: all 0.3s;
 }
 
@@ -314,7 +317,7 @@ body {
 }
 
 .price-list {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.6); /* Darker for white text contrast */
   border-radius: 12px;
   padding: 16px; /* Giảm từ 20px */
   margin-bottom: auto; /* Đẩy CTA xuống đáy */
@@ -324,12 +327,16 @@ body {
   justify-content: space-between;
   margin-bottom: 8px; /* Giảm từ 12px */
   padding-bottom: 8px; /* Giảm từ 12px */
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: white; /* Default text white */
 }
 .price-item:last-child {
   border: none;
   margin: 0;
   padding: 0;
+}
+.price-item strong {
+  color: white; /* Ensure price is white */
 }
 .zone-indicator {
   display: inline-block;
@@ -352,7 +359,7 @@ body {
   border-radius: 12px;
   cursor: not-allowed;
   background: #444;
-  color: #888;
+  color: white; /* White text requested */
   transition: all 0.3s;
   display: flex;
   justify-content: space-between;
