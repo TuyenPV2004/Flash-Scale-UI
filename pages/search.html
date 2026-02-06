@@ -219,7 +219,7 @@
             Tất cả các ngày
             <i class="ph ph-caret-down"></i>
           </button>
-          <button class="filter-btn">
+          <button class="filter-btn" id="general-filter-btn">
             <i class="ph ph-funnel"></i>
             Bộ lọc
           </button>
@@ -1146,6 +1146,353 @@
             applyBtn.setAttribute("disabled", "true");
           }
         }
+      });
+    </script>
+    <!-- General Filter Panel -->
+    <div class="filter-panel" id="filterPanel">
+      <!-- Section 1: Location -->
+      <div class="filter-section">
+        <h3 class="filter-title">Vị trí</h3>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="location" value="all" checked />
+            <span class="radio-custom"></span>
+            Toàn quốc
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="location" value="hcm" />
+            <span class="radio-custom"></span>
+            Hồ Chí Minh
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="location" value="hanoi" />
+            <span class="radio-custom"></span>
+            Hà Nội
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="location" value="other" />
+            <span class="radio-custom"></span>
+            Vị trí khác
+          </label>
+        </div>
+      </div>
+
+      <div class="filter-divider"></div>
+
+      <!-- Section 2: Price -->
+      <div class="filter-section">
+        <h3 class="filter-title">Giá tiền</h3>
+        <div class="price-toggle-row">
+          <span>Miễn phí</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="priceToggle" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="filter-divider"></div>
+
+      <!-- Section 3: Categories -->
+      <div class="filter-section">
+        <h3 class="filter-title">Thể loại</h3>
+        <div class="category-chips">
+          <button class="chip-btn" data-cat="music">Nhạc sống</button>
+          <button class="chip-btn" data-cat="stage">
+            Sân khấu & Nghệ thuật
+          </button>
+          <button class="chip-btn" data-cat="sports">Thể thao</button>
+          <button class="chip-btn" data-cat="workshop">
+            Hội thảo & Workshop
+          </button>
+          <button class="chip-btn" data-cat="tour">
+            Tham quan & Trải nghiệm
+          </button>
+          <button class="chip-btn" data-cat="other">Khác</button>
+        </div>
+      </div>
+
+      <!-- Footer Actions -->
+      <div class="date-actions">
+        <button class="action-btn text-btn" id="resetFilterBtn">
+          Thiết lập lại
+        </button>
+        <button class="action-btn primary-btn" id="applyFilterBtn">
+          Áp dụng
+        </button>
+      </div>
+    </div>
+
+    <style>
+      /* Filter Panel Styles */
+      .filter-panel {
+        position: absolute;
+        width: 360px; /* Sidebar width */
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        border: 1px solid var(--border);
+        z-index: 2000;
+        padding: 24px;
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 8px;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .filter-panel.show {
+        display: flex;
+        animation: fadeIn 0.2s ease-out;
+      }
+
+      .filter-section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .filter-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+      }
+
+      .filter-divider {
+        height: 1px;
+        border-top: 1px dashed var(--border);
+        width: 100%;
+      }
+
+      /* Radio Group */
+      .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .radio-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        font-size: 14px;
+        color: var(--text-secondary);
+      }
+
+      .radio-item:hover {
+        color: var(--text-primary);
+      }
+
+      .radio-item input {
+        display: none;
+      }
+
+      .radio-custom {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--border);
+        border-radius: 50%;
+        position: relative;
+        transition: all 0.2s;
+      }
+
+      .radio-item input:checked + .radio-custom {
+        border-color: var(--primary);
+      }
+
+      .radio-item input:checked + .radio-custom::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        background: var(--primary);
+        border-radius: 50%;
+      }
+
+      .radio-item input:checked ~ span {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      /* Price Toggle */
+      .price-toggle-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 44px;
+        height: 24px;
+      }
+
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #cbd5e1;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .toggle-slider {
+        background-color: var(--primary);
+      }
+
+      input:checked + .toggle-slider:before {
+        transform: translateX(20px);
+      }
+
+      /* Category Chips */
+      .category-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip-btn {
+        padding: 8px 16px;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .chip-btn:hover {
+        background: var(--bg-main);
+        color: var(--text-primary);
+      }
+
+      .chip-btn.active {
+        background: rgba(45, 194, 117, 0.1);
+        border-color: var(--primary);
+        color: var(--primary);
+        font-weight: 600;
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- FILTER PANEL LOGIC ---
+        const filterPanel = document.getElementById("filterPanel");
+        const filterTriggerBtn = document.getElementById("general-filter-btn");
+        const chipBtns = document.querySelectorAll(".chip-btn");
+        const resetFilterBtn = document.getElementById("resetFilterBtn");
+        const applyFilterBtn = document.getElementById("applyFilterBtn");
+
+        // Date Picker elements for coordination
+        const modal = document.getElementById("datePickerModal");
+        const triggerBtn = document.getElementById("date-filter-btn");
+
+        // Toggle Filter Panel
+        filterTriggerBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isActive = filterPanel.classList.contains("show");
+
+          if (isActive) {
+            filterPanel.classList.remove("show");
+            filterTriggerBtn.classList.remove("active");
+          } else {
+            // Close date picker if open
+            if (modal && modal.classList.contains("show")) {
+              modal.classList.remove("show");
+              triggerBtn.classList.remove("active");
+            }
+
+            const rect = filterTriggerBtn.getBoundingClientRect();
+
+            filterPanel.style.top = rect.bottom + window.scrollY + "px";
+
+            // Align Right
+            const panelWidth = 360;
+            // using window.scrollX for safety
+            const left = rect.right + window.scrollX - panelWidth;
+
+            filterPanel.style.left = Math.max(20, left) + "px";
+
+            filterPanel.classList.add("show");
+            filterTriggerBtn.classList.add("active");
+          }
+        });
+
+        // Close Filter Panel on Outside Click
+        document.addEventListener("click", (e) => {
+          if (filterPanel && filterTriggerBtn) {
+            if (
+              !filterPanel.contains(e.target) &&
+              !filterTriggerBtn.contains(e.target)
+            ) {
+              filterPanel.classList.remove("show");
+              filterTriggerBtn.classList.remove("active");
+            }
+          }
+        });
+
+        // Chip Multi-select
+        chipBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            btn.classList.toggle("active");
+          });
+        });
+
+        // Reset Filter
+        resetFilterBtn.addEventListener("click", () => {
+          // Reset Radios
+          const allRadio = document.querySelector(
+            'input[name="location"][value="all"]',
+          );
+          if (allRadio) allRadio.checked = true;
+
+          // Reset Toggle
+          const toggle = document.getElementById("priceToggle");
+          if (toggle) toggle.checked = false;
+
+          // Reset Chips
+          chipBtns.forEach((btn) => btn.classList.remove("active"));
+        });
+
+        // Apply Filter (Mock)
+        applyFilterBtn.addEventListener("click", () => {
+          filterPanel.classList.remove("show");
+          filterTriggerBtn.classList.remove("active");
+          // Add logic here to actually filter requests
+        });
       });
     </script>
   </body>
