@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
@@ -6,8 +6,157 @@
     <title>Kết quả tìm kiếm - FlashTicket</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
     <link rel="stylesheet" href="../assets/css/home.css" />
-    <link rel="stylesheet" href="../assets/css/search.css" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+      /* Search Page Specific Styles */
+      .search-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 32px;
+        margin-bottom: 32px;
+      }
+
+      .search-header-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .search-result-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--text-primary);
+      }
+
+      .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .filter-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-full);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .filter-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .filter-btn i {
+        font-size: 16px;
+      }
+
+      /* Search Results Grid - 5 rows x 4 columns = 20 events */
+      .search-results-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-bottom: 48px;
+      }
+
+      /* Event Card - following index.html standard-card design */
+      .event-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .event-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .event-card .thumb-wrapper {
+        position: relative;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+      }
+
+      .event-card .thumb-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .event-card:hover .thumb-wrapper img {
+        transform: scale(1.05);
+      }
+
+      .event-card .card-content {
+        padding: 16px;
+      }
+
+      .event-card .card-title {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 44px;
+        color: var(--text-primary);
+      }
+
+      .event-card .card-price {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 4px;
+      }
+
+      .event-card .card-meta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: var(--text-secondary);
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .search-results-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .search-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+
+        .search-results-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .search-results-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar">
@@ -21,164 +170,469 @@
             <input
               type="text"
               class="search-input"
-              placeholder="Tìm kiếm sự kiện..."
-              value="Music Festival"
+              placeholder="Tìm sự kiện, nghệ sĩ, địa điểm..."
+              value="Concert"
             />
           </div>
         </div>
         <div class="nav-right nav-actions">
+          <a
+            href="#"
+            class="btn btn-outline"
+            style="font-size: 14px; font-weight: 600"
+            >Tạo sự kiện</a
+          >
           <a href="login.html" class="btn btn-outline">Đăng nhập</a>
           <a href="register.html" class="btn btn-primary">Đăng ký</a>
         </div>
       </div>
     </nav>
+    <nav class="category-nav">
+      <div class="container">
+        <ul class="category-list">
+          <li class="category-item">
+            <a href="#" class="category-link">Nhạc sống</a>
+          </li>
+          <li class="category-item">
+            <a href="#" class="category-link">Sân khấu và Nghệ thuật</a>
+          </li>
+          <li class="category-item">
+            <a href="#" class="category-link">Thể Thao</a>
+          </li>
+          <li class="category-item">
+            <a href="#" class="category-link">Hội thảo và Workshop</a>
+          </li>
+          <li class="category-item">
+            <a href="#" class="category-link">Tham quan và Trải nghiệm</a>
+          </li>
+          <li class="category-item">
+            <a href="#" class="category-link">Khác</a>
+          </li>
+          <li class="category-item">
+            <a href="#" class="category-link">Vé bán lại</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <main class="container">
-      <div class="search-header-wrapper">
-        <h1 class="search-title">
-          Kết quả tìm kiếm: <span class="search-keyword">"Music Festival"</span>
-        </h1>
-
+      <!-- Search Header -->
+      <div class="search-header">
+        <h1 class="search-result-title">Kết quả tìm kiếm:</h1>
         <div class="filter-group">
-          <select class="filter-select">
-            <option>Tất cả các ngày</option>
-            <option>Cuối tuần này</option>
-            <option>Tháng 10/2026</option>
-            <option>Tháng 11/2026</option>
-          </select>
-          
           <button class="filter-btn">
-            <i class="ph ph-faders"></i> Bộ lọc
+            <i class="ph ph-calendar-blank"></i>
+            Tất cả các ngày
+            <i class="ph ph-caret-down"></i>
+          </button>
+          <button class="filter-btn">
+            <i class="ph ph-funnel"></i>
+            Bộ lọc
           </button>
         </div>
       </div>
 
+      <!-- Search Results Grid: 5 rows x 4 columns = 20 events -->
       <div class="search-results-grid">
-        
-        <div class="search-card" onclick="window.location.href='event-detail.html'">
-            <div class="card-thumb-wrapper">
-                <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=600" class="card-thumb">
-            </div>
-            <div class="card-info">
-                <h3 class="card-title">Ravolution Music Festival 2026</h3>
-                <div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 15/10 • 19:00</div>
-                <div class="card-price">Từ 2.000.000đ</div>
-            </div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper">
-                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600" class="card-thumb">
-            </div>
-            <div class="card-info">
-                <h3 class="card-title">Tomorrowland Experience Vietnam</h3>
-                <div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 20/10 • 18:00</div>
-                <div class="card-price">Từ 1.500.000đ</div>
-            </div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper">
-                <img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=600" class="card-thumb">
-            </div>
-            <div class="card-info">
-                <h3 class="card-title">Hà Anh Tuấn Concert - Chân Trời</h3>
-                <div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 25/10 • 20:00</div>
-                <div class="card-price">Từ 3.000.000đ</div>
-            </div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper">
-                <img src="https://images.unsplash.com/photo-1459749411177-0473ef71607b?q=80&w=600" class="card-thumb">
-            </div>
-            <div class="card-info">
-                <h3 class="card-title">Lễ Hội Âm Nhạc Gió Mùa 2026</h3>
-                <div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 01/11 • 17:00</div>
-                <div class="card-price">Từ 800.000đ</div>
-            </div>
-        </div>
+        <!-- Row 1 -->
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=1000&auto=format&fit=crop"
+              alt="Taylor Swift Concert"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">The Eras Tour - Taylor Swift</h4>
+            <p class="card-price">Từ 2.500.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 15 tháng 03, 2026
+            </p>
+          </div>
+        </article>
 
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Indie Night: Ngọt & Chillies</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 05/11 • 20:00</div><div class="card-price">500.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Westlife Tour 2026</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 10/11 • 19:30</div><div class="card-price">1.800.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Gala Nhạc Việt Tết 2027</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 15/11 • 20:00</div><div class="card-price">1.200.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">EDM Beach Festival</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 20/11 • 16:00</div><div class="card-price">900.000đ</div></div>
-        </div>
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=1000&auto=format&fit=crop"
+              alt="Quốc Thiên Concert"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Quốc Thiên - Hẹn Nhau Trong Giấc Mơ</h4>
+            <p class="card-price">Từ 700.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 28 tháng 02, 2026
+            </p>
+          </div>
+        </article>
 
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Jazz By The Sea</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 22/11 • 18:00</div><div class="card-price">1.500.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1459749411177-0473ef71607b?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Rock Storm Returns</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 25/11 • 19:00</div><div class="card-price">400.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Acoustic Night: Lân Nhã</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 28/11 • 20:30</div><div class="card-price">800.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">BlackPink World Tour Encore</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 01/12 • 19:00</div><div class="card-price">3.500.000đ</div></div>
-        </div>
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=1000&auto=format&fit=crop"
+              alt="Tăng Phúc Show"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">MINISHOW TĂNG PHÚC: MÃ ĐÁO THÀNH CÔNG</h4>
+            <p class="card-price">Từ 1.500.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 20 tháng 02, 2026
+            </p>
+          </div>
+        </article>
 
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Countdown Party 2027</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 31/12 • 21:00</div><div class="card-price">Miễn phí</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Nhạc Kịch: Chicago</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 05/01 • 20:00</div><div class="card-price">1.000.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Show: Ký Ức Hội An</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> Hàng đêm • 19:30</div><div class="card-price">600.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Đêm Nhạc Trịnh Công Sơn</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 10/01 • 20:00</div><div class="card-price">500.000đ</div></div>
-        </div>
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop"
+              alt="EDM Festival"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Tomorrowland Experience Vietnam</h4>
+            <p class="card-price">Từ 1.200.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 10 tháng 04, 2026
+            </p>
+          </div>
+        </article>
 
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Workshop: Làm Gốm</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 12/01 • 09:00</div><div class="card-price">300.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Triển Lãm Van Gogh</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 15/01 • 08:00</div><div class="card-price">400.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1459749411177-0473ef71607b?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Xiếc Quốc Tế</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 20/01 • 19:00</div><div class="card-price">200.000đ</div></div>
-        </div>
-        <div class="search-card">
-            <div class="card-thumb-wrapper"><img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=600" class="card-thumb"></div>
-            <div class="card-info"><h3 class="card-title">Standup Comedy</h3><div class="card-meta"><i class="ph-fill ph-calendar-blank"></i> 25/01 • 20:00</div><div class="card-price">250.000đ</div></div>
-        </div>
+        <!-- Row 2 -->
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1514525253361-9257620d4f23?q=80&w=1000&auto=format&fit=crop"
+              alt="Trung Quân Concert"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Trung Quân - Chiều Nay Không Có Mưa Bay</h4>
+            <p class="card-price">Từ 800.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 21 tháng 02, 2026
+            </p>
+          </div>
+        </article>
 
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1459749411177-042180ce673c?q=80&w=1000&auto=format&fit=crop"
+              alt="Hiền Hồ Show"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">[CAT&MOUSE] CA SĨ HIỀN HỒ + KHÁCH MỜI</h4>
+            <p class="card-price">Từ 800.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 28 tháng 02, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000&auto=format&fit=crop"
+              alt="Westlife Tour"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Westlife - The Wild Dreams Tour</h4>
+            <p class="card-price">Từ 1.800.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 05 tháng 05, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?q=80&w=1000&auto=format&fit=crop"
+              alt="Fireworks Festival"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Fireworks Festival Đà Nẵng 2026</h4>
+            <p class="card-price">Từ 500.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 01 tháng 06, 2026
+            </p>
+          </div>
+        </article>
+
+        <!-- Row 3 -->
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1000&auto=format&fit=crop"
+              alt="Ký Ức Hội An"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Ký Ức Hội An - Show Thực Cảnh</h4>
+            <p class="card-price">Từ 600.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 15 tháng 03, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://salt.tkbcdn.com/ts/ds/23/a1/82/2d03b36411a1c7e4069cefa5c0b09c24.png"
+              alt="Vũ Cát Tường Concert"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Vũ Cát Tường - Inner Me Concert</h4>
+            <p class="card-price">Từ 1.100.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 22 tháng 04, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1000&auto=format&fit=crop"
+              alt="Winter Night Festival"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Winter Night Music Festival</h4>
+            <p class="card-price">Từ 450.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 25 tháng 12, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop"
+              alt="Ravolution Festival"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Ravolution Music Festival 2026</h4>
+            <p class="card-price">Từ 950.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 18 tháng 07, 2026
+            </p>
+          </div>
+        </article>
+
+        <!-- Row 4 -->
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://bvhttdl.mediacdn.vn/documents/491975/908037/kep+hat+de.jpg"
+              alt="Kẹp Hạt Dẻ Ballet"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Kẹp Hạt Dẻ - Vở Ballet Kinh Điển</h4>
+            <p class="card-price">Từ 400.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 24 tháng 12, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://cdn3.ivivu.com/2023/12/tri%E1%BB%83n-l%C3%A3m-Van-Gogh-ivivu.jpg"
+              alt="Van Gogh Exhibition"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Triển lãm Van Gogh Immersive</h4>
+            <p class="card-price">Từ 300.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 01 tháng 03, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?q=80&w=1000&auto=format&fit=crop"
+              alt="Hồn Trương Ba Drama"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Kịch: Hồn Trương Ba Da Hàng Thịt</h4>
+            <p class="card-price">Từ 250.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 10 tháng 03, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://res.klook.com/image/upload/c_crop,h_1080,w_1920,x_-1,y_0,z_0.2/w_750,h_469,c_fill,q_85/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/qzbtc7rtf3d9vxi2874x.jpg"
+              alt="Chicago Musical"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Nhạc Kịch: Chicago - Broadway Edition</h4>
+            <p class="card-price">Từ 900.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 20 tháng 05, 2026
+            </p>
+          </div>
+        </article>
+
+        <!-- Row 5 -->
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1566433311776-e62e93c200bc?q=80&w=1000&auto=format&fit=crop"
+              alt="KidZania Hà Nội"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Vé Trải Nghiệm KidZania Hà Nội</h4>
+            <p class="card-price">Từ 50.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 24 tháng 01, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1545567191-7e116f10d291?q=80&w=1000&auto=format&fit=crop"
+              alt="Stay in the Temple"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">STAY IN THE TEMPLE - MỪNG XUÂN 2026</h4>
+            <p class="card-price">Từ 200.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 27 tháng 01, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1444703686981-a3abb997b721?q=80&w=1000&auto=format&fit=crop"
+              alt="Đài thiên văn Nha Trang"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">
+              Ngắm Bầu Trời Đêm - Đài Thiên Văn Nha Trang
+            </h4>
+            <p class="card-price">Từ 30.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 01 tháng 02, 2026
+            </p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="thumb-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1000&auto=format&fit=crop"
+              alt="Bay Dù Lượn Hà Nội"
+            />
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Trải Nghiệm Bay Dù Lượn Hà Nội</h4>
+            <p class="card-price">Từ 1.850.000đ</p>
+            <p class="card-meta">
+              <i class="ph ph-calendar-blank"></i> 06 tháng 02, 2026
+            </p>
+          </div>
+        </article>
       </div>
-
-      <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 60px;">
-        <button class="btn btn-primary">1</button>
-        <button class="btn btn-outline" style="border-color: #333; color: white;">2</button>
-        <button class="btn btn-outline" style="border-color: #333; color: white;">3</button>
-        <button class="btn btn-outline" style="border-color: #333; color: white;">...</button>
-      </div>
-
     </main>
 
-    <footer class="dark-footer" style="margin-top: 0; padding: 40px 0; background: #1c1c1e; border-top: 1px solid #333; text-align: center; color: #666; font-size: 14px;">
-        <div class="container">
-            © 2026 FlashTicket Corporation. All rights reserved.
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <a
+              href="../index.html"
+              class="logo"
+              style="color: white; margin-bottom: 20px; display: inline-block"
+              >FlashTicket</a
+            >
+            <p style="color: #94a3b8; font-size: 14px; line-height: 1.6">
+              Nền tảng đặt vé sự kiện trực tuyến hàng đầu Việt Nam. Kết nối bạn
+              với hàng ngàn sự kiện hấp dẫn.
+            </p>
+            <div class="social-links" style="margin-top: 24px">
+              <i class="ph ph-facebook-logo"></i>
+              <i class="ph ph-instagram-logo"></i>
+              <i class="ph ph-youtube-logo"></i>
+              <i class="ph ph-tiktok-logo"></i>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Sự kiện</h4>
+            <ul class="footer-links">
+              <li><a href="#">Nhạc sống</a></li>
+              <li><a href="#">Sân khấu</a></li>
+              <li><a href="#">Thể thao</a></li>
+              <li><a href="#">Workshop</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Hỗ trợ</h4>
+            <ul class="footer-links">
+              <li><a href="#">Trung tâm hỗ trợ</a></li>
+              <li><a href="#">Hướng dẫn mua vé</a></li>
+              <li><a href="#">Chính sách hoàn vé</a></li>
+              <li><a href="#">Liên hệ</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Về chúng tôi</h4>
+            <ul class="footer-links">
+              <li><a href="#">Giới thiệu</a></li>
+              <li><a href="#">Tuyển dụng</a></li>
+              <li><a href="#">Điều khoản sử dụng</a></li>
+              <li><a href="#">Chính sách bảo mật</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Đối tác thanh toán</h4>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap">
+              <img
+                src="https://homepage.momocdn.net/fileuploads/svg/momo-file-240411162904.svg"
+                alt="MoMo"
+                style="height: 32px"
+              />
+              <img
+                src="https://vnpay.vn/assets/images/logo-icon/logo-primary.svg"
+                alt="VNPay"
+                style="height: 32px"
+              />
+            </div>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>© 2026 FlashTicket. All rights reserved.</p>
+          <p>Made with ❤️ in Vietnam</p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

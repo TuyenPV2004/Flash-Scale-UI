@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - FlashTicket</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <i class="ph-fill ph-ticket"></i> FlashAdmin
+        </div>
+
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="active"><i class="ph ph-squares-four"></i> Tổng quan</a>
+            </li>
+            <li class="nav-label">Quản lý bán vé</li>
+            <li class="nav-item">
+                <a href="events.html"><i class="ph ph-calendar-plus"></i> Sự kiện</a>
+            </li>
+            <li class="nav-item">
+                <a href="#"><i class="ph ph-ticket"></i> Đơn hàng</a>
+            </li>
+            <li class="nav-item">
+                <a href="#"><i class="ph ph-users"></i> Khách hàng</a>
+            </li>
+            
+            <li class="nav-label">Hệ thống & AI</li>
+            <li class="nav-item">
+                <a href="#"><i class="ph ph-lightning"></i> Flash Sale Monitor</a>
+            </li>
+            <li class="nav-item">
+                <a href="#"><i class="ph ph-robot"></i> Cấu hình AI (RAG)</a>
+            </li>
+            <li class="nav-item">
+                <a href="#"><i class="ph ph-gear"></i> Cài đặt</a>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="admin-header">
+            <div class="page-title">
+                <h1>Dashboard</h1>
+                <p>Chào mừng trở lại, Administrator.</p>
+            </div>
+            <div class="admin-profile">
+                <img src="https://ui-avatars.com/api/?name=Admin&background=random" style="width: 32px; height: 32px; border-radius: 50%;">
+                <span style="font-size: 14px; font-weight: 600;">System Admin</span>
+            </div>
+        </header>
+
+        <div class="live-monitor">
+            <div>
+                <div class="live-indicator"><div class="live-dot"></div> Hệ thống đang mở bán</div>
+                <h2 style="font-size: 24px; margin-top: 8px;">The Eras Tour - Flash Sale</h2>
+            </div>
+            <div style="display: flex; gap: 40px; text-align: right;">
+                <div>
+                    <div style="font-size: 13px; color: #a5b4fc;">CCU (Online)</div>
+                    <div style="font-size: 24px; font-weight: 700;">12,450</div>
+                </div>
+                <div>
+                    <div style="font-size: 13px; color: #a5b4fc;">Queue Length</div>
+                    <div style="font-size: 24px; font-weight: 700;">3,200</div>
+                </div>
+                <div>
+                    <div style="font-size: 13px; color: #a5b4fc;">Server Load</div>
+                    <div style="font-size: 24px; font-weight: 700; color: #4ade80;">42%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="ph ph-currency-dollar stat-icon"></i>
+                <div class="stat-label">Tổng doanh thu</div>
+                <div class="stat-value">4.2 Tỷ</div>
+                <div class="stat-change up"><i class="ph-bold ph-trend-up"></i> +12.5% so với tháng trước</div>
+            </div>
+            <div class="stat-card">
+                <i class="ph ph-ticket stat-icon"></i>
+                <div class="stat-label">Vé đã bán</div>
+                <div class="stat-value">8,540</div>
+                <div class="stat-change up"><i class="ph-bold ph-trend-up"></i> +5.2%</div>
+            </div>
+            <div class="stat-card">
+                <i class="ph ph-users stat-icon"></i>
+                <div class="stat-label">Người dùng mới</div>
+                <div class="stat-value">1,203</div>
+                <div class="stat-change down"><i class="ph-bold ph-trend-down"></i> -2.1%</div>
+            </div>
+            <div class="stat-card">
+                <i class="ph ph-warning-circle stat-icon"></i>
+                <div class="stat-label">Đơn lỗi/Hoàn tiền</div>
+                <div class="stat-value">12</div>
+                <div class="stat-change down" style="color: #a0a0a0;">Cần xử lý ngay</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">
+                <h3 style="font-size: 16px; font-weight: 700;">Đơn hàng gần đây</h3>
+                <button class="btn" style="padding: 8px 16px; font-size: 13px; border: 1px solid var(--border-color); background: transparent; color: white;">Xem tất cả</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã đơn</th>
+                        <th>Khách hàng</th>
+                        <th>Sự kiện</th>
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#ORD-8821</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>The Eras Tour</td>
+                        <td>2</td>
+                        <td>5.000.000đ</td>
+                        <td><span class="badge success">Thành công</span></td>
+                        <td><button class="btn-icon"><i class="ph-bold ph-eye"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td>#ORD-8820</td>
+                        <td>Trần Thị B</td>
+                        <td>Hà Anh Tuấn Concert</td>
+                        <td>1</td>
+                        <td>1.200.000đ</td>
+                        <td><span class="badge warning">Chờ thanh toán</span></td>
+                        <td><button class="btn-icon"><i class="ph-bold ph-eye"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td>#ORD-8819</td>
+                        <td>Lê Văn C</td>
+                        <td>Ký Ức Hội An</td>
+                        <td>4</td>
+                        <td>2.400.000đ</td>
+                        <td><span class="badge danger">Đã hủy</span></td>
+                        <td><button class="btn-icon"><i class="ph-bold ph-eye"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td>#ORD-8818</td>
+                        <td>Phạm Minh D</td>
+                        <td>Ravolution Music Fest</td>
+                        <td>2</td>
+                        <td>1.800.000đ</td>
+                        <td><span class="badge success">Thành công</span></td>
+                        <td><button class="btn-icon"><i class="ph-bold ph-eye"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

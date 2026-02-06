@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý đơn hàng - FlashTicket Admin</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand"><i class="ph-fill ph-ticket"></i> FlashAdmin</div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html"><i class="ph ph-squares-four"></i> Tổng quan</a></li>
+            <li class="nav-label">Quản lý bán vé</li>
+            <li class="nav-item"><a href="events.html"><i class="ph ph-calendar-plus"></i> Sự kiện</a></li>
+            <li class="nav-item"><a href="orders.html" class="active"><i class="ph ph-receipt"></i> Đơn hàng</a></li>
+            <li class="nav-item"><a href="customers.html"><i class="ph ph-users"></i> Khách hàng</a></li>
+            </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="admin-header">
+            <div class="page-title">
+                <h1>Quản lý đơn hàng</h1>
+                <p>Theo dõi và xử lý các giao dịch đặt vé.</p>
+            </div>
+            <button class="btn btn-primary" style="padding: 10px 20px;">
+                <i class="ph-bold ph-download-simple"></i> Xuất báo cáo
+            </button>
+        </header>
+
+        <div style="background: var(--bg-panel); padding: 20px; border-radius: 16px; margin-bottom: 24px; border: 1px solid var(--border-color); display: flex; gap: 16px; flex-wrap: wrap;">
+            <div class="search-bar" style="width: 300px; background: rgba(0,0,0,0.2);">
+                <i class="ph ph-magnifying-glass search-icon"></i>
+                <input type="text" class="search-input" placeholder="Mã đơn, SĐT, Email...">
+            </div>
+            
+            <select style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: white; padding: 0 16px; border-radius: 8px; height: 42px;">
+                <option value="">Tất cả trạng thái</option>
+                <option value="success">Thành công</option>
+                <option value="pending">Chờ thanh toán</option>
+                <option value="failed">Thất bại/Hủy</option>
+            </select>
+
+            <select style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: white; padding: 0 16px; border-radius: 8px; height: 42px;">
+                <option value="">Sự kiện: Tất cả</option>
+                <option value="eras">The Eras Tour</option>
+                <option value="hat">Hà Anh Tuấn Concert</option>
+            </select>
+
+            <input type="date" style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: white; padding: 0 16px; border-radius: 8px; height: 42px; color-scheme: dark;">
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã đơn</th>
+                        <th>Khách hàng</th>
+                        <th>Sự kiện</th>
+                        <th>Vé / Ghế</th>
+                        <th>Tổng tiền</th>
+                        <th>Cổng thanh toán</th>
+                        <th>Ngày đặt</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-family: monospace; color: var(--primary);">#ORD-9921</td>
+                        <td>
+                            <div style="font-weight: 600;">Nguyễn Văn A</div>
+                            <div style="font-size: 12px; color: var(--text-muted);">0901234567</div>
+                        </td>
+                        <td>The Eras Tour</td>
+                        <td>
+                            <div>2 vé</div>
+                            <div style="font-size: 11px; color: var(--text-muted);">CAT 1 (A-12, A-13)</div>
+                        </td>
+                        <td style="font-weight: 700;">5.000.000đ</td>
+                        <td><span style="font-size: 12px;">Momo</span></td>
+                        <td style="font-size: 13px;">15/10/2026<br>10:30</td>
+                        <td><span class="badge success">Thành công</span></td>
+                        <td>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn-icon" title="Xem chi tiết"><i class="ph-bold ph-eye"></i></button>
+                                <button class="btn-icon" title="In vé"><i class="ph-bold ph-printer"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="font-family: monospace; color: var(--text-muted);">#ORD-9920</td>
+                        <td>
+                            <div style="font-weight: 600;">Trần Thị B</div>
+                            <div style="font-size: 12px; color: var(--text-muted);">0987654321</div>
+                        </td>
+                        <td>Tomorrowland VN</td>
+                        <td>1 vé</td>
+                        <td style="font-weight: 700;">1.500.000đ</td>
+                        <td><span style="font-size: 12px;">VNPAY</span></td>
+                        <td style="font-size: 13px;">15/10/2026<br>10:28</td>
+                        <td><span class="badge warning">Chờ thanh toán</span></td>
+                        <td>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn-icon"><i class="ph-bold ph-eye"></i></button>
+                                <button class="btn-icon" style="color: #ef4444;" title="Hủy đơn"><i class="ph-bold ph-x"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-family: monospace; color: var(--text-muted);">#ORD-9919</td>
+                        <td>
+                            <div style="font-weight: 600;">Lê Văn C</div>
+                            <div style="font-size: 12px; color: var(--text-muted);">0912345678</div>
+                        </td>
+                        <td>Ký Ức Hội An</td>
+                        <td>4 vé</td>
+                        <td style="font-weight: 700;">2.400.000đ</td>
+                        <td><span style="font-size: 12px;">Visa/Master</span></td>
+                        <td style="font-size: 13px;">14/10/2026<br>19:15</td>
+                        <td><span class="badge danger">Đã hủy</span></td>
+                        <td>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn-icon"><i class="ph-bold ph-eye"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="padding: 20px; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 13px;">
+                <div>Hiển thị 1-10 trên tổng số 1,240 đơn hàng</div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn-icon"><i class="ph-bold ph-caret-left"></i></button>
+                    <button class="btn-icon" style="background: var(--primary); color: white; border-color: var(--primary);">1</button>
+                    <button class="btn-icon">2</button>
+                    <button class="btn-icon">3</button>
+                    <button class="btn-icon"><i class="ph-bold ph-caret-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
