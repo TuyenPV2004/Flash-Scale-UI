@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông tin tài khoản - FlashTicket</title>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/profile.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-container">
+        <div class="nav-left">
+          <a href="../index.html" class="logo">FlashTicket</a>
+        </div>
+        <div class="nav-center">
+          <div class="search-bar">
+            <i class="ph ph-magnifying-glass search-icon"></i>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Tìm sự kiện, nghệ sĩ, địa điểm..."
+            />
+          </div>
+        </div>
+        <div class="nav-right nav-actions">
+           <div style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+              <img src="https://ui-avatars.com/api/?name=Tu+Van&background=00ba51&color=fff" style="width: 36px; height: 36px; border-radius: 50%;">
+              <span style="font-weight: 600; font-size: 14px;">Tài khoản</span>
+           </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="breadcrumb">
+        Trang chủ <span>/</span> Cài đặt tài khoản <span>/</span> Thông tin tài khoản
+      </div>
+
+      <div class="profile-layout">
+        
+        <aside class="profile-sidebar">
+            <div class="user-summary">
+                <img src="https://ui-avatars.com/api/?name=Tu+Van&background=00ba51&color=fff" class="user-avatar-small">
+                <div class="user-info-text">
+                    <span class="label">Tài khoản của</span>
+                    <span class="name">Tú Văn</span>
+                </div>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#" class="menu-link active">
+                        <i class="ph-bold ph-user"></i> Thông tin tài khoản
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="ph-bold ph-ticket"></i> Vé của tôi
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="ph-bold ph-heart"></i> Sự kiện yêu thích
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="ph-bold ph-bell"></i> Thông báo
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link" style="color: #ef4444;">
+                        <i class="ph-bold ph-sign-out"></i> Đăng xuất
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="profile-content">
+            <div class="form-header">
+                <h1 class="form-title">Thông tin tài khoản</h1>
+                <div class="divider"></div>
+            </div>
+
+            <form>
+                <div class="avatar-upload-wrapper">
+                    <div class="avatar-preview">
+                        <img src="https://ui-avatars.com/api/?name=Tu+Van&background=00ba51&color=fff" class="avatar-large">
+                        <div class="camera-icon-badge">
+                            <i class="ph-bold ph-camera"></i>
+                        </div>
+                    </div>
+                    <p class="upload-hint">Vui lòng cung cấp thông tin chính xác để bảo vệ vé của bạn.</p>
+                </div>
+
+                <div class="form-grid">
+                    
+                    <div class="form-group">
+                        <label>Họ và tên</label>
+                        <input type="text" class="search-input" value="Nguyễn Tú Văn" style="border-radius: 8px; border: 1px solid var(--border);">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <div class="input-group-phone">
+                            <select class="area-code-select">
+                                <option value="+84">+84</option>
+                                <option value="+1">+1</option>
+                            </select>
+                            <input type="text" class="search-input" value="0901234567" style="border-radius: 8px; border: 1px solid var(--border);">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <div class="input-disabled-wrapper">
+                            <input type="email" class="search-input input-disabled" value="tuvan@example.com" disabled style="border-radius: 8px; border: 1px solid var(--border);">
+                            <i class="ph-fill ph-check-circle verified-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ngày sinh</label>
+                        <input type="date" class="search-input" value="1999-01-01" style="border-radius: 8px; border: 1px solid var(--border); color-scheme: dark;">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Giới tính</label>
+                        <div class="radio-group">
+                            <label class="custom-radio">
+                                <input type="radio" name="gender" value="male" checked> Nam
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="gender" value="female"> Nữ
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="gender" value="other"> Khác
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px; height: 48px; font-size: 16px;">
+                        Hoàn thành
+                    </button>
+
+                </div>
+            </form>
+        </main>
+      </div>
+    </div>
+
+    <footer class="dark-footer" style="margin-top: 0; padding: 40px 0; background: #1c1c1e; border-top: 1px solid #333; text-align: center; color: #666; font-size: 14px;">
+        <div class="container">
+            © 2026 FlashTicket Corporation. All rights reserved.
+        </div>
+    </footer>
+  </body>
+</html>
