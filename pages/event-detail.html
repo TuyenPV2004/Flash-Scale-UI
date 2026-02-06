@@ -6,22 +6,32 @@
     <title>The Eras Tour - Chi tiết sự kiện</title>
     <link rel="stylesheet" href="../assets/css/global.css" />
     <link rel="stylesheet" href="../assets/css/event-ticket.css" />
+    <link rel="stylesheet" href="../assets/css/home.css" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
   <body>
     <nav class="navbar">
       <div class="container nav-container">
-        <a href="../index.html" class="logo"> FlashTicket </a>
-        <div class="search-bar">
-          <i class="ph ph-magnifying-glass search-icon"></i>
-          <input
-            type="text"
-            class="search-input"
-            placeholder="Tìm kiếm sự kiện, nghệ sĩ..."
-          />
+        <div class="nav-left">
+          <a href="../index.html" class="logo">FlashTicket</a>
         </div>
-        <div class="auth-buttons">
+
+        <div class="nav-center">
+          <div class="search-bar">
+            <i class="ph ph-magnifying-glass search-icon"></i>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Tìm sự kiện, nghệ sĩ, địa điểm..."
+            />
+          </div>
+        </div>
+
+        <div class="nav-right nav-actions">
+          <a href="#" style="font-size: 14px; font-weight: 600">Tạo sự kiện</a>
+          <a href="#" style="font-size: 14px; font-weight: 600">Liên hệ</a>
           <a href="login.html" class="btn btn-outline">Đăng nhập</a>
+          <a href="register.html" class="btn btn-primary">Đăng ký</a>
         </div>
       </div>
     </nav>
@@ -32,29 +42,38 @@
           <div class="ticket-left">
             <div>
               <h1 class="event-title-hero">
-                The Eras Tour - Taylor Swift (Vietnam Stop)
+                [The Grand Ho Tram] Stay & Concert: HỒ NGỌC HÀ
               </h1>
 
               <div class="event-meta-row">
                 <i class="ph-fill ph-calendar-blank meta-icon"></i>
                 <div class="meta-text">
-                  <strong>15 Tháng 10, 2026</strong>
-                  <span>20:00 - 23:00</span>
+                  <strong>07 tháng 02, 2026</strong>
+                  <span>19:30 - 21:00</span>
                 </div>
               </div>
 
               <div class="event-meta-row">
                 <i class="ph-fill ph-map-pin meta-icon"></i>
                 <div class="meta-text">
-                  <strong>SVĐ Quốc Gia Mỹ Đình</strong>
-                  <span>Số 1 Lê Đức Thọ, Mỹ Đình, Nam Từ Liêm, Hà Nội</span>
+                  <strong
+                    >The Grand Ho Tram (Ấp Hồ Tràm, Xã Hồ Tràm, Thành phố Hồ Chí
+                    Minh - mới)</strong
+                  >
+                  <span
+                    >Xa Ho Tram,Thanh Pho Ho Chi Minh, Xã Phước Thuận, Huyện
+                    Xuyên Mộc, Tỉnh Bà Rịa - Vũng Tàu</span
+                  >
                 </div>
               </div>
             </div>
 
             <div>
-              <div class="ticket-price-label">Giá vé từ</div>
-              <div class="ticket-price-value">2.500.000 ₫</div>
+              <div class="ticket-divider"></div>
+              <div class="ticket-price-container">
+                <div class="ticket-price-label">Giá vé từ</div>
+                <div class="ticket-price-value">2.500.000 ₫</div>
+              </div>
               <a href="booking.html" style="text-decoration: none">
                 <button class="btn-buy-ticket">Mua vé ngay</button>
               </a>
@@ -64,7 +83,7 @@
           <div
             class="ticket-right"
             style="
-              background-image: url(&quot;https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=2000&quot;);
+              background-image: url(https://salt.tkbcdn.com/ts/ds/b8/e6/a3/9d3a2c5a55034767ca29d32caa3ac874.jpeg);
             "
           ></div>
         </div>
@@ -145,15 +164,6 @@
             </div>
           </div>
         </div>
-
-        <aside class="sidebar">
-          <div class="sidebar-banner">
-            <img
-              src="https://img.pikbest.com/origin/10/06/18/69cpIkbEsTxwi.jpg!w700wp"
-              alt="Banner Tet"
-            />
-          </div>
-        </aside>
       </div>
 
       <section class="content-block">
