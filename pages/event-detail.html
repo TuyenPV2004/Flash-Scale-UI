@@ -29,7 +29,6 @@
 
         <div class="nav-right nav-actions">
           <a href="#" style="font-size: 14px; font-weight: 600">Tạo sự kiện</a>
-          <a href="#" style="font-size: 14px; font-weight: 600">Liên hệ</a>
           <a href="login.html" class="btn btn-outline">Đăng nhập</a>
           <a href="register.html" class="btn btn-primary">Đăng ký</a>
         </div>
@@ -114,32 +113,65 @@
           </div>
 
           <div class="content-block">
-            <h3 class="block-title">Thông tin vé</h3>
-            <div class="ticket-list-container">
-              <div class="ticket-date-select">
-                <div class="date-pill active">15/10/2026</div>
-                <div class="date-pill">16/10/2026</div>
-                <div class="date-pill">17/10/2026</div>
+            <h3 class="block-title">Lịch trình</h3>
+            <div class="schedule-group">
+              <!-- Session 1 -->
+              <div class="accordion-item active">
+                <div class="accordion-header">
+                  <div class="session-info">
+                    <span class="session-time">19:30 - 22:30</span>
+                    <span class="session-day-date"
+                      >Thứ Bảy, 07 Tháng 02, 2026</span
+                    >
+                  </div>
+                  <button class="btn-buy-now">Mua vé ngay</button>
+                </div>
+                <div class="accordion-content">
+                  <h4 class="ticket-info-title">Thông tin vé</h4>
+                  <div class="ticket-type-list">
+                    <div class="ticket-type-block">
+                      <span class="type-name">VÉ VIP</span>
+                      <span class="type-price">5.000.000 ₫</span>
+                    </div>
+                    <div class="ticket-type-block">
+                      <span class="type-name">VÉ CƠ BẢN</span>
+                      <span class="type-price">3.500.000 ₫</span>
+                    </div>
+                    <div class="ticket-type-block">
+                      <span class="type-name">VÉ TIÊU CHUẨN</span>
+                      <span class="type-price">2.500.000 ₫</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div class="ticket-list">
-                <div class="ticket-item">
-                  <span class="ticket-name"
-                    >CAT 1 - Standing (Sát sân khấu)</span
-                  >
-                  <span class="ticket-price">5.000.000 ₫</span>
+              <!-- Session 2 (Example) -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="session-info">
+                    <span class="session-time">19:30 - 22:30</span>
+                    <span class="session-day-date"
+                      >Thứ Hai, 09 Tháng 02, 2026</span
+                    >
+                  </div>
+                  <button class="btn-buy-now">Mua vé ngay</button>
                 </div>
-                <div class="ticket-item">
-                  <span class="ticket-name">CAT 2 - Seating (Tầng 1)</span>
-                  <span class="ticket-price">3.500.000 ₫</span>
-                </div>
-                <div class="ticket-item">
-                  <span class="ticket-name">CAT 3 - Seating (Tầng 2)</span>
-                  <span class="ticket-price">2.500.000 ₫</span>
-                </div>
-                <div class="ticket-item">
-                  <span class="ticket-name">VIP Package (Early Entry)</span>
-                  <span class="ticket-price">10.000.000 ₫</span>
+                <div class="accordion-content">
+                  <h4 class="ticket-info-title">Thông tin vé</h4>
+                  <div class="ticket-type-list">
+                    <div class="ticket-type-block">
+                      <span class="type-name">VÉ VIP</span>
+                      <span class="type-price">5.000.000 ₫</span>
+                    </div>
+                    <div class="ticket-type-block">
+                      <span class="type-name">VÉ CƠ BẢN</span>
+                      <span class="type-price">3.500.000 ₫</span>
+                    </div>
+                    <div class="ticket-type-block">
+                      <span class="type-name">VÉ TIÊU CHUẨN</span>
+                      <span class="type-price">2.500.000 ₫</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -317,5 +349,31 @@
         © 2026 FlashTicket Corporation. All rights reserved.
       </div>
     </footer>
+    <script>
+      document.querySelectorAll(".accordion-header").forEach((header) => {
+        header.addEventListener("click", () => {
+          const item = header.parentElement;
+          const isActive = item.classList.contains("active");
+
+          // Close all items
+          document.querySelectorAll(".accordion-item").forEach((i) => {
+            i.classList.remove("active");
+          });
+
+          // Toggle current item
+          if (!isActive) {
+            item.classList.add("active");
+          }
+        });
+      });
+
+      // Prevent "Mua vé ngay" button from triggering accordion
+      document.querySelectorAll(".btn-buy-now").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          window.location.href = "booking.html";
+        });
+      });
+    </script>
   </body>
 </html>
