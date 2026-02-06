@@ -176,6 +176,27 @@ body {
 }
 
 /* --- 2. BODY LAYOUT (Phần dưới giữ nguyên style sáng) --- */
+.content-block {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 30px;
+}
+
+.block-title {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border: 2px solid #0f172a;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
 .description-text {
   color: #475569; /* Text tối trên nền trắng */
   line-height: 1.7;
@@ -223,23 +244,118 @@ body {
   border: 1px solid #e2e8f0;
   border-radius: 16px;
   padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.org-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #f1f5f9;
+}
+
+.org-name {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.org-desc {
+  font-size: 13px;
+  color: #64748b;
 }
 
 /* --- 3. SUGGESTION GRID --- */
+.suggestions-section {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.suggestions-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 40px;
+}
+
 .suggestion-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 30px;
 }
+
+.mini-card {
+  text-align: left;
+}
+
+.mini-card img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
 .mini-card h4 {
   color: #0f172a;
-  margin-top: 12px;
+  font-size: 16px;
   font-weight: 700;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.mini-card p {
+
+.mini-card .price-tag {
   color: var(--neon-green);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.mini-card .time-tag {
+  color: #64748b;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mini-card .time-tag i {
+  color: var(--neon-green);
+  font-size: 16px;
+}
+
+.view-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.btn-view-more {
+  background: transparent;
+  color: var(--neon-green);
+  border: 2px solid var(--neon-green);
+  padding: 12px 32px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-view-more:hover {
+  background: var(--neon-green);
+  color: white;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+  transform: translateY(-2px);
 }
 
 /* Responsive */
