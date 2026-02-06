@@ -125,9 +125,9 @@ body {
   color: var(--text-main);
 }
 .btn-apply {
-  background: #333;
-  color: white;
-  border: none;
+  background: #ffffff;
+  color: var(--primary);
+  border: 1px solid var(--primary);
   width: 130px; /* Tăng thêm để đủ chỗ cho chữ "Chọn voucher" */
   border-radius: 8px;
   cursor: pointer;
