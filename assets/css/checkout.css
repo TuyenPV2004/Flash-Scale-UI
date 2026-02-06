@@ -1,15 +1,16 @@
-/* --- BIẾN MÀU CỤC BỘ --- */
 :root {
-  --bg-page: #111111;
-  --bg-panel: #1c1c1e;
-  --border: #333333;
-  --primary: #00ba51;
+  --bg-page: #f8fafc;
+  --bg-panel: #ffffff;
+  --border: #e2e8f0;
+  --primary: #2dc275; /* Updated per user request */
   --danger: #ef4444; /* Màu đỏ cho đồng hồ đếm ngược */
+  --text-main: #0f172a;
+  --text-muted: #64748b;
 }
 
 body {
   background-color: var(--bg-page);
-  color: white;
+  color: var(--text-main);
 }
 
 /* --- 1. HEADER & CONTEXT (THANH TIÊU ĐỀ) --- */
@@ -106,7 +107,7 @@ body {
   border: 1px solid var(--primary);
   padding: 16px;
   border-radius: 8px;
-  color: #e2e8f0;
+  color: var(--text-main); /* Fixed: Dark text for visibility */
   font-size: 14px;
 }
 
@@ -117,11 +118,11 @@ body {
 }
 .voucher-input {
   flex: 1; /* Để ô nhập tự động giãn ra chiếm hết khoảng trống */
-  background: #111;
+  background: #ffffff;
   border: 1px solid var(--border);
   padding: 12px;
   border-radius: 8px;
-  color: white;
+  color: var(--text-main);
 }
 .btn-apply {
   background: #333;
@@ -149,12 +150,13 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   cursor: pointer;
-  background: #252525;
+  background: #ffffff;
   transition: all 0.2s;
 }
 
 .payment-item:hover {
-  border-color: #666;
+  border-color: #94a3b8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* Style khi được chọn */
@@ -314,14 +316,15 @@ body {
 }
 
 .modal-content {
-  background: #252528;
-  border: 1px solid #444;
+  background: #ffffff;
+  border: 1px solid var(--border);
   border-radius: 16px;
   width: 90%;
   max-width: 450px;
   padding: 24px;
   transform: scale(0.9);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .modal-overlay.active .modal-content {
@@ -332,12 +335,12 @@ body {
 .modal-title {
   font-size: 20px;
   font-weight: 700;
-  color: white;
+  color: var(--text-main);
   margin-bottom: 12px;
 }
 .modal-message {
   font-size: 15px;
-  color: #a0a0a0;
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 24px;
 }
@@ -350,13 +353,17 @@ body {
 }
 
 .btn-secondary {
-  background: #333;
-  color: white;
-  border: none;
+  background: #f1f5f9;
+  color: var(--text-main);
+  border: 1px solid var(--border);
   padding: 10px 20px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-secondary:hover {
+  background: #e2e8f0;
 }
 .btn-danger {
   background: var(--danger);
@@ -394,11 +401,12 @@ body {
 .modal-header h3 {
   font-size: 18px;
   margin: 0;
+  color: var(--text-main);
 }
 .btn-close {
   background: none;
   border: none;
-  color: white;
+  color: var(--text-muted);
   font-size: 20px;
   cursor: pointer;
 }
@@ -417,7 +425,8 @@ body {
 .voucher-ticket {
   display: flex;
   background: #ffffff;
-  color: #1a1a1b;
+  color: var(--text-main);
+  border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -431,11 +440,12 @@ body {
 
 .voucher-ticket:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .voucher-ticket.selected {
   outline: 2px solid var(--primary);
+  border-color: var(--primary);
 }
 
 /* Serrated Edge (Răng cưa) */
@@ -446,10 +456,15 @@ body {
   left: 30%;
   width: 20px;
   height: 20px;
-  background: #252528; /* Khớp màu nền modal */
+  background: #ffffff; /* Khớp màu nền modal */
   border-radius: 50%;
   z-index: 2;
+  border: 1px solid var(--border); /* Thêm border cho vết cắt nếu cần, nhưng khó khớp */
+  /* Cách tốt hơn là dùng background của modal-content phủ lên */
+  background: #ffffff; /* Khớp với bg-panel = #ffffff, nhưng modal-content cũng là #ffffff */
 }
+/* Thực tế vết cắt nên trong suốt hoặc khớp màu nền cha. Ở đây cha là modal-list -> modal-content (#ffffff) */
+
 .voucher-ticket::before {
   top: -10px;
 }

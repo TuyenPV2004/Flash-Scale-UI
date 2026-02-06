@@ -11,7 +11,11 @@
   <body>
     <nav
       class="navbar"
-      style="background: #111; border-bottom: 1px solid #333; padding: 15px 0"
+      style="
+        background: var(--primary);
+        border-bottom: 1px solid var(--primary);
+        padding: 15px 0;
+      "
     >
       <div
         class="container"
@@ -21,7 +25,7 @@
           style="
             font-size: 20px;
             font-weight: 800;
-            color: var(--primary);
+            color: white;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -40,7 +44,8 @@
           <p>
             <i class="ph-fill ph-calendar-blank"></i> 07/02/2026 - 20:00
             <span style="margin: 0 8px">|</span>
-            <i class="ph-fill ph-map-pin"></i> Ấp Hồ Tràm, Xã Hồ Tràm, Thành phố Hồ Chí Minh
+            <i class="ph-fill ph-map-pin"></i> Ấp Hồ Tràm, Xã Hồ Tràm, Thành phố
+            Hồ Chí Minh
           </p>
         </div>
         <div class="countdown-box">
@@ -57,7 +62,10 @@
               <i class="ph-fill ph-envelope-simple"></i> Thông tin nhận vé
             </h3>
             <div class="eticket-notice">
-              <i class="ph-fill ph-info" style="font-size: 24px"></i>
+              <i
+                class="ph-fill ph-info"
+                style="font-size: 24px; color: var(--primary)"
+              ></i>
               <div>
                 Vé điện tử sẽ được gửi về email
                 <strong>tuvan@example.com</strong> và lưu trong mục

@@ -299,7 +299,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 24px; /* Giảm từ 30px */
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
   position: relative;
   z-index: 20;
 }
@@ -321,6 +321,11 @@ body {
   border-radius: 12px;
   padding: 16px; /* Giảm từ 20px */
   margin-bottom: auto; /* Đẩy CTA xuống đáy */
+}
+.price-list h3 {
+  color: white;
+  font-size: 16px; /* Moved from inline if preferred, or just redundant safety */
+  margin-bottom: 16px;
 }
 .price-item {
   display: flex;
