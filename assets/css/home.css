@@ -480,8 +480,9 @@
 
 /* --- 7. Detailed Footer --- */
 .footer {
-  background: #0f172a;
-  color: white;
+  background: white;
+  border-top: 1px solid var(--border);
+  color: var(--text-primary);
   padding: 80px 0 40px;
   margin-top: 100px;
 }
@@ -492,7 +493,7 @@
   margin-bottom: 60px;
 }
 .footer-col h4 {
-  color: white;
+  color: var(--text-primary);
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 24px;
@@ -504,12 +505,12 @@
   margin-bottom: 12px;
 }
 .footer-links a {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 14px;
   font-weight: 400;
 }
 .footer-links a:hover {
-  color: white;
+  color: var(--primary);
 }
 .social-links {
   display: flex;
@@ -517,19 +518,19 @@
 }
 .social-links i {
   font-size: 24px;
-  color: #94a3b8;
+  color: var(--text-secondary);
   cursor: pointer;
 }
 .social-links i:hover {
   color: var(--primary);
 }
 .footer-bottom {
-  border-top: 1px solid #1e293b;
+  border-top: 1px solid var(--border);
   padding-top: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 13px;
 }
 
