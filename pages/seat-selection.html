@@ -59,67 +59,67 @@
                   <div class="row-label">A</div>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'A1')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'A2')"
                   ></button>
                   <button class="seat-btn sold"></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'A4')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'A5')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'A6')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'A7')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'A8')"
                   ></button>
                 </div>
                 <div class="row">
                   <div class="row-label">B</div>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'B1')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'B2')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'B3')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'B4')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'B5')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'B6')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'B7')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 5000000)"
+                    onclick="toggleSeat(this, 5000000, 'B8')"
                   ></button>
                 </div>
               </div>
@@ -153,8 +153,8 @@
                                             ${Array(10)
                                               .fill(0)
                                               .map(
-                                                () =>
-                                                  `<button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>`,
+                                                (_, i) =>
+                                                  `<button class="seat-btn available" onclick="toggleSeat(this, 3500000, '${rowTitle}${i + 1}')"></button>`,
                                               )
                                               .join("")}
                                         </div>
@@ -171,43 +171,43 @@
                   <div class="row-label">N</div>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 2500000)"
+                    onclick="toggleSeat(this, 2500000, 'N1')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 2500000)"
+                    onclick="toggleSeat(this, 2500000, 'N2')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 2500000)"
+                    onclick="toggleSeat(this, 2500000, 'N3')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 2500000)"
+                    onclick="toggleSeat(this, 2500000, 'N4')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 2500000)"
+                    onclick="toggleSeat(this, 2500000, 'N5')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 2500000)"
+                    onclick="toggleSeat(this, 2500000, 'N6')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 2500000)"
+                    onclick="toggleSeat(this, 2500000, 'N7')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 2500000)"
+                    onclick="toggleSeat(this, 2500000, 'N8')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 2500000)"
+                    onclick="toggleSeat(this, 2500000, 'N9')"
                   ></button>
                   <button
                     class="seat-btn available"
-                    onclick="toggleSeat(this, 2500000)"
+                    onclick="toggleSeat(this, 2500000, 'N10')"
                   ></button>
                 </div>
               </div>
@@ -278,7 +278,7 @@
             "
           >
             <span class="text-mute">Đã chọn:</span>
-            <strong id="seatCount">0 ghế</strong>
+            <strong id="seatCount">0</strong>
           </div>
 
           <button
@@ -296,7 +296,7 @@
     <script>
       let currentScale = 1;
       let totalAmount = 0;
-      let selectedSeats = 0;
+      let selectedSeats = [];
 
       // Zoom Logic
       function zoom(delta) {
@@ -312,32 +312,39 @@
       }
 
       // Seat Logic
-      function toggleSeat(btn, price) {
+      function toggleSeat(btn, price, seatLabel) {
         if (btn.classList.contains("selected")) {
           // Bỏ chọn
           btn.classList.remove("selected");
           btn.classList.add("available");
           totalAmount -= price;
-          selectedSeats--;
+          selectedSeats = selectedSeats.filter((s) => s !== seatLabel);
         } else {
           // Chọn
           btn.classList.remove("available");
           btn.classList.add("selected");
           totalAmount += price;
-          selectedSeats++;
+          selectedSeats.push(seatLabel);
         }
         updateSidebar();
       }
 
       function updateSidebar() {
-        document.getElementById("seatCount").innerText = `${selectedSeats} ghế`;
+        const seatCountEl = document.getElementById("seatCount");
+        if (selectedSeats.length > 0) {
+          // Hiển thị danh sách ghế, ví dụ: "C1, D2"
+          seatCountEl.innerText = selectedSeats.sort().join(", ");
+        } else {
+          seatCountEl.innerText = "-";
+        }
+
         const btn = document.getElementById("checkoutBtn");
         const priceText = btn.querySelector("span:last-child");
         const labelText = btn.querySelector("span:first-child");
 
         priceText.innerText = totalAmount.toLocaleString("vi-VN") + " ₫";
 
-        if (selectedSeats > 0) {
+        if (selectedSeats.length > 0) {
           btn.classList.add("active");
           btn.disabled = false;
           labelText.innerText = "Thanh toán ngay";
