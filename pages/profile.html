@@ -56,9 +56,7 @@
     </nav>
 
     <div class="container">
-      <div class="breadcrumb">
-        Trang chủ <span>></span> Thông tin tài khoản
-      </div>
+      <div class="breadcrumb">Trang chủ <span>></span> Thông tin tài khoản</div>
 
       <div class="profile-layout">
         <aside class="profile-sidebar">
@@ -103,91 +101,396 @@
         </aside>
 
         <main class="profile-content">
-          <div class="form-header">
-            <h1 class="form-title">Thông tin tài khoản</h1>
+          <!-- Account Info Section -->
+          <div id="account-tab-content">
+            <div class="form-header">
+              <h1 class="form-title">Thông tin tài khoản</h1>
+            </div>
+
+            <form>
+              <div class="avatar-upload-wrapper">
+                <div class="avatar-preview">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Tu+Van&background=00ba51&color=fff"
+                    class="avatar-large"
+                  />
+                  <div class="camera-icon-badge">
+                    <i class="ph-bold ph-camera"></i>
+                  </div>
+                </div>
+                <p class="upload-hint">
+                  Vui lòng cung cấp thông tin chính xác để bảo vệ vé của bạn.
+                </p>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Họ và tên</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Nguyễn Tú Văn"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Số điện thoại</label>
+                  <div class="input-group-phone">
+                    <select class="area-code-select">
+                      <option value="+84">+84</option>
+                      <option value="+1">+1</option>
+                    </select>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="0901234567"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Email</label>
+                  <div class="input-disabled-wrapper">
+                    <input
+                      type="email"
+                      class="form-control input-disabled"
+                      value="tuvan@example.com"
+                      disabled
+                    />
+                    <i class="ph-fill ph-check-circle verified-icon"></i>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Ngày sinh</label>
+                  <input type="date" class="form-control" value="1999-01-01" />
+                </div>
+
+                <div class="form-group">
+                  <label>Giới tính</label>
+                  <div class="radio-group">
+                    <label class="custom-radio">
+                      <input type="radio" name="gender" value="male" checked />
+                      Nam
+                    </label>
+                    <label class="custom-radio">
+                      <input type="radio" name="gender" value="female" /> Nữ
+                    </label>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="
+                    width: 100%;
+                    margin-top: 20px;
+                    height: 48px;
+                    font-size: 16px;
+                  "
+                >
+                  Hoàn thành
+                </button>
+              </div>
+            </form>
           </div>
 
-          <form>
-            <div class="avatar-upload-wrapper">
-              <div class="avatar-preview">
-                <img
-                  src="https://ui-avatars.com/api/?name=Tu+Van&background=00ba51&color=fff"
-                  class="avatar-large"
-                />
-                <div class="camera-icon-badge">
-                  <i class="ph-bold ph-camera"></i>
-                </div>
-              </div>
-              <p class="upload-hint">
-                Vui lòng cung cấp thông tin chính xác để bảo vệ vé của bạn.
-              </p>
+          <!-- My Tickets Section (Hidden by default) -->
+          <div id="ticket-tab-content" class="hidden">
+            <div class="form-header">
+              <h1 class="form-title">Vé của tôi</h1>
             </div>
 
-            <div class="form-grid">
-              <div class="form-group">
-                <label>Họ và tên</label>
-                <input type="text" class="form-control" value="Nguyễn Tú Văn" />
-              </div>
+            <!-- Main Tabs -->
+            <ul class="ticket-tabs">
+              <li class="tab-item active" data-tab="all">Tất cả</li>
+              <li class="tab-item" data-tab="success">Thành công</li>
+              <li class="tab-item" data-tab="processing">Đang xử lý</li>
+              <li class="tab-item" data-tab="cancelled">Đã hủy</li>
+            </ul>
 
-              <div class="form-group">
-                <label>Số điện thoại</label>
-                <div class="input-group-phone">
-                  <select class="area-code-select">
-                    <option value="+84">+84</option>
-                    <option value="+1">+1</option>
-                  </select>
-                  <input type="text" class="form-control" value="0901234567" />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Email</label>
-                <div class="input-disabled-wrapper">
-                  <input
-                    type="email"
-                    class="form-control input-disabled"
-                    value="tuvan@example.com"
-                    disabled
-                  />
-                  <i class="ph-fill ph-check-circle verified-icon"></i>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Ngày sinh</label>
-                <input type="date" class="form-control" value="1999-01-01" />
-              </div>
-
-              <div class="form-group">
-                <label>Giới tính</label>
-                <div class="radio-group">
-                  <label class="custom-radio">
-                    <input type="radio" name="gender" value="male" checked />
-                    Nam
-                  </label>
-                  <label class="custom-radio">
-                    <input type="radio" name="gender" value="female" /> Nữ
-                  </label>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                class="btn btn-primary"
-                style="
-                  width: 100%;
-                  margin-top: 20px;
-                  height: 48px;
-                  font-size: 16px;
-                "
-              >
-                Hoàn thành
+            <!-- Sub Tabs (Dynamic) -->
+            <div class="sub-tabs-container" id="subTabs">
+              <button class="sub-tab active" data-sub="upcoming">
+                Sắp diễn ra
               </button>
+              <button class="sub-tab" data-sub="past">Đã kết thúc</button>
             </div>
-          </form>
+
+            <!-- Ticket List Placeholder -->
+            <div class="ticket-list" id="ticketList">
+              <!-- Example Ticket Item -->
+              <div class="ticket-card">
+                <div class="ticket-thumb">
+                  <img
+                    src="https://i.pinimg.com/736x/e1/d2/25/e1d225782ae0adf9f4b09839d43d2b5f.jpg"
+                    alt="Event Thumb"
+                  />
+                </div>
+                <div class="ticket-info">
+                  <h4 class="ticket-event-name">
+                    The Eras Tour - Taylor Swift
+                  </h4>
+                  <div class="ticket-meta">
+                    <span><i class="ph ph-calendar-blank"></i> 15/03/2026</span>
+                    <span><i class="ph ph-clock"></i> 19:00</span>
+                  </div>
+                  <div class="ticket-location">
+                    <i class="ph ph-map-pin"></i> Sân vận động quốc gia Mỹ Đình
+                  </div>
+                  <div class="ticket-status status-success">Thành công</div>
+                </div>
+              </div>
+
+              <div class="ticket-card">
+                <div class="ticket-thumb">
+                  <img
+                    src="https://ticketgo.vn/uploads/images/event-logo/event_logo-2598ec82bc099a803b86f384ecf9a296.jpg"
+                    alt="Event Thumb"
+                  />
+                </div>
+                <div class="ticket-info">
+                  <h4 class="ticket-event-name">
+                    Quốc Thiên - Hẹn Nhau Trong Giấc Mơ
+                  </h4>
+                  <div class="ticket-meta">
+                    <span><i class="ph ph-calendar-blank"></i> 28/02/2026</span>
+                    <span><i class="ph ph-clock"></i> 20:00</span>
+                  </div>
+                  <div class="ticket-location">
+                    <i class="ph ph-map-pin"></i> Sân vận động quốc gia Mỹ Đình
+                  </div>
+                  <div class="ticket-status status-processing">Đang xử lý</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>
+
+    <style>
+      .hidden {
+        display: none !important;
+      }
+
+      /* Ticket Tabs */
+      .ticket-tabs {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+        border-bottom: 2px solid #eee;
+        gap: 32px;
+      }
+
+      .tab-item {
+        padding-bottom: 12px;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--text-secondary);
+        cursor: pointer;
+        position: relative;
+        transition: color 0.2s;
+      }
+
+      .tab-item:hover {
+        color: var(--text-primary);
+      }
+
+      .tab-item.active {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .tab-item.active::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--primary);
+      }
+
+      /* Sub Tabs */
+      .sub-tabs-container {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .sub-tab {
+        padding: 6px 16px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        background: white;
+        color: var(--text-secondary);
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .sub-tab:hover {
+        border-color: var(--text-secondary);
+      }
+
+      .sub-tab.active {
+        background: rgba(45, 194, 117, 0.1);
+        color: var(--primary);
+        border-color: var(--primary);
+        font-weight: 600;
+      }
+
+      /* Ticket Card */
+      .ticket-card {
+        display: flex;
+        gap: 16px;
+        padding: 16px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 16px;
+        background: white;
+        transition: box-shadow 0.2s;
+      }
+
+      .ticket-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .ticket-thumb {
+        width: 120px;
+        height: 90px;
+        border-radius: 8px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+
+      .ticket-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .ticket-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .ticket-event-name {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0;
+        color: var(--text-primary);
+      }
+
+      .ticket-meta {
+        display: flex;
+        gap: 16px;
+        font-size: 13px;
+        color: var(--text-secondary);
+      }
+
+      .ticket-meta span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .ticket-location {
+        font-size: 13px;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .ticket-status {
+        align-self: flex-start;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 4px;
+        margin-top: 4px;
+      }
+
+      .status-success {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      .status-processing {
+        background: #fff7ed;
+        color: #9a3412;
+      }
+
+      .status-cancelled {
+        background: #fef2f2;
+        color: #991b1b;
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Section Navigation
+        const menuLinks = document.querySelectorAll(".sidebar-menu .menu-link");
+        const accountContent = document.getElementById("account-tab-content");
+        const ticketContent = document.getElementById("ticket-tab-content");
+
+        menuLinks.forEach((link, index) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // Update Active Menu
+            menuLinks.forEach((l) => l.classList.remove("active"));
+            link.classList.add("active");
+
+            // Specific Logic: Index 0 = Account, Index 1 = My Tickets
+            if (index === 0) {
+              // Account Info
+              accountContent.classList.remove("hidden");
+              ticketContent.classList.add("hidden");
+            } else if (index === 1) {
+              // My Tickets
+              accountContent.classList.add("hidden");
+              ticketContent.classList.remove("hidden");
+            }
+          });
+        });
+
+        // Ticket Tabs Logic
+        const tabs = document.querySelectorAll(".tab-item");
+        const subTabsContainer = document.getElementById("subTabs");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            // Update Active Tab
+            tabs.forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            const tabType = tab.dataset.tab;
+
+            // Toggle Sub-tabs visibility
+            if (tabType === "all" || tabType === "success") {
+              subTabsContainer.style.display = "flex";
+            } else {
+              subTabsContainer.style.display = "none";
+            }
+          });
+        });
+
+        // Sub-tabs interaction
+        const subTabBtns = document.querySelectorAll(".sub-tab");
+        subTabBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            subTabBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+          });
+        });
+      });
+    </script>
 
     <footer
       class="dark-footer"
