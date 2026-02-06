@@ -266,6 +266,85 @@
             </div>
           </div>
 
+          <!-- Favorite Section (Hidden by default) -->
+          <div id="favorite-tab-content" class="hidden">
+            <div class="form-header">
+              <h1 class="form-title">Sự kiện yêu thích</h1>
+            </div>
+
+            <div class="ticket-list">
+              <!-- Fav Item 1 -->
+              <div class="ticket-card">
+                <div class="ticket-thumb">
+                  <img
+                    src="https://quangcaongoaitroi.com/wp-content/uploads/2025/11/unique-ooh-quang-cao-ooh-cho-live-concert-dan-truong-1.jpg"
+                    alt="Event Thumb"
+                  />
+                </div>
+                <div class="ticket-info">
+                  <h4 class="ticket-event-name">
+                    Đan Trường - Concert Người Dựng Trong Bao
+                  </h4>
+                  <div class="ticket-meta">
+                    <span><i class="ph ph-calendar-blank"></i> 14/02/2026</span>
+                    <span><i class="ph ph-clock"></i> 20:00</span>
+                  </div>
+                  <div class="ticket-location">
+                    <i class="ph ph-map-pin"></i> Nhà hát Hòa Bình
+                  </div>
+                </div>
+                <div
+                  class="fav-actions"
+                  style="display: flex; align-items: center"
+                >
+                  <button
+                    class="btn-icon"
+                    style="background: none; border: none; cursor: pointer"
+                  >
+                    <i
+                      class="ph-fill ph-heart"
+                      style="color: #ef4444; font-size: 24px"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Fav Item 2 -->
+              <div class="ticket-card">
+                <div class="ticket-thumb">
+                  <img
+                    src="https://salt.tkbcdn.com/ts/ds/25/e6/b4/d79786df1e38c39beabe33c462cc381e.jpg"
+                    alt="Event Thumb"
+                  />
+                </div>
+                <div class="ticket-info">
+                  <h4 class="ticket-event-name">Hà Anh Tuấn - Sketch a Rose</h4>
+                  <div class="ticket-meta">
+                    <span><i class="ph ph-calendar-blank"></i> 20/04/2026</span>
+                    <span><i class="ph ph-clock"></i> 19:30</span>
+                  </div>
+                  <div class="ticket-location">
+                    <i class="ph ph-map-pin"></i> Opera House, Singapore
+                  </div>
+                </div>
+                <div
+                  class="fav-actions"
+                  style="display: flex; align-items: center"
+                >
+                  <button
+                    class="btn-icon"
+                    style="background: none; border: none; cursor: pointer"
+                  >
+                    <i
+                      class="ph-fill ph-heart"
+                      style="color: #ef4444; font-size: 24px"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Notification Section (Hidden by default) -->
           <div id="notification-tab-content" class="hidden">
             <div class="form-header">
@@ -579,6 +658,7 @@
         const notifContent = document.getElementById(
           "notification-tab-content",
         );
+        const favContent = document.getElementById("favorite-tab-content");
 
         menuLinks.forEach((link, index) => {
           link.addEventListener("click", (e) => {
@@ -592,6 +672,7 @@
             accountContent.classList.add("hidden");
             ticketContent.classList.add("hidden");
             if (notifContent) notifContent.classList.add("hidden");
+            if (favContent) favContent.classList.add("hidden");
 
             // Show relevant
             if (index === 0) {
@@ -600,8 +681,11 @@
             } else if (index === 1) {
               // Tickets
               ticketContent.classList.remove("hidden");
+            } else if (index === 2) {
+              // Favorite
+              if (favContent) favContent.classList.remove("hidden");
             } else if (index === 3) {
-              // Notification (Index 3 based on sidebar list)
+              // Notification
               if (notifContent) notifContent.classList.remove("hidden");
             }
           });
