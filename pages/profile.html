@@ -265,6 +265,61 @@
               </div>
             </div>
           </div>
+
+          <!-- Notification Section (Hidden by default) -->
+          <div id="notification-tab-content" class="hidden">
+            <div class="form-header">
+              <h1 class="form-title">Thông báo</h1>
+            </div>
+
+            <div class="notification-list">
+              <!-- Item 1: System/Promo -->
+              <div class="notification-item unread">
+                <div class="notif-icon icon-promo">
+                  <i class="ph-fill ph-ticket"></i>
+                </div>
+                <div class="notif-content">
+                  <h4 class="notif-title">Săn vé The Eras Tour ngay!</h4>
+                  <p class="notif-desc">
+                    Cổng bán vé sẽ mở vào lúc 12:00 hôm nay. Chuẩn bị sẵn sàng
+                    để không bỏ lỡ cơ hội.
+                  </p>
+                  <span class="notif-time">10 phút trước</span>
+                </div>
+                <div class="notif-status"></div>
+              </div>
+
+              <!-- Item 2: Order Success -->
+              <div class="notification-item">
+                <div class="notif-icon icon-success">
+                  <i class="ph-fill ph-check-circle"></i>
+                </div>
+                <div class="notif-content">
+                  <h4 class="notif-title">Đặt vé thành công</h4>
+                  <p class="notif-desc">
+                    Bạn đã đặt thành công 2 vé cho sự kiện "Quốc Thiên - Hẹn
+                    Nhau Trong Giấc Mơ".
+                  </p>
+                  <span class="notif-time">1 ngày trước</span>
+                </div>
+              </div>
+
+              <!-- Item 3: Alert/Cancel -->
+              <div class="notification-item">
+                <div class="notif-icon icon-alert">
+                  <i class="ph-fill ph-info"></i>
+                </div>
+                <div class="notif-content">
+                  <h4 class="notif-title">Thay đổi địa điểm sự kiện</h4>
+                  <p class="notif-desc">
+                    Sự kiện "EDM Festival" đã thay đổi địa điểm tổ chức. Vui
+                    lòng kiểm tra lại vé của bạn.
+                  </p>
+                  <span class="notif-time">3 ngày trước</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>
@@ -430,6 +485,89 @@
         background: #fef2f2;
         color: #991b1b;
       }
+      /* Notification Styles */
+      .notification-list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .notification-item {
+        display: flex;
+        gap: 16px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border);
+        transition: background-color 0.2sg;
+        cursor: pointer;
+      }
+
+      .notification-item:first-child {
+        padding-top: 0;
+      }
+
+      .notification-item:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+      }
+
+      .notif-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .icon-promo {
+        background: #fff7ed;
+        color: #f97316;
+      }
+
+      .icon-success {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      .icon-alert {
+        background: #eff6ff;
+        color: #3b82f6;
+      }
+
+      .notif-content {
+        flex: 1;
+      }
+
+      .notif-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 4px 0;
+        color: var(--text-primary);
+      }
+
+      .notif-desc {
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin: 0 0 8px 0;
+        line-height: 1.4;
+      }
+
+      .notif-time {
+        font-size: 12px;
+        color: #94a3b8;
+      }
+
+      .notification-item.unread .notif-title {
+        color: var(--primary);
+      }
+
+      .notif-status {
+        width: 8px;
+        height: 8px;
+        background: var(--primary);
+        border-radius: 50%;
+        margin-top: 8px;
+      }
     </style>
 
     <script>
@@ -438,6 +576,9 @@
         const menuLinks = document.querySelectorAll(".sidebar-menu .menu-link");
         const accountContent = document.getElementById("account-tab-content");
         const ticketContent = document.getElementById("ticket-tab-content");
+        const notifContent = document.getElementById(
+          "notification-tab-content",
+        );
 
         menuLinks.forEach((link, index) => {
           link.addEventListener("click", (e) => {
@@ -447,15 +588,21 @@
             menuLinks.forEach((l) => l.classList.remove("active"));
             link.classList.add("active");
 
-            // Specific Logic: Index 0 = Account, Index 1 = My Tickets
+            // Hide all first
+            accountContent.classList.add("hidden");
+            ticketContent.classList.add("hidden");
+            if (notifContent) notifContent.classList.add("hidden");
+
+            // Show relevant
             if (index === 0) {
-              // Account Info
+              // Account
               accountContent.classList.remove("hidden");
-              ticketContent.classList.add("hidden");
             } else if (index === 1) {
-              // My Tickets
-              accountContent.classList.add("hidden");
+              // Tickets
               ticketContent.classList.remove("hidden");
+            } else if (index === 3) {
+              // Notification (Index 3 based on sidebar list)
+              if (notifContent) notifContent.classList.remove("hidden");
             }
           });
         });
