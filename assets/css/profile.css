@@ -202,13 +202,14 @@
 }
 
 .area-code-select {
-  width: 100px;
-  padding: 12px;
-  background: var(--bg-input);
+  width: 80px;
+  padding: 12px 8px;
+  background: white;
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text-primary);
   outline: none;
+  cursor: pointer;
 }
 
 /* Disabled Input cho Email */
