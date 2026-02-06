@@ -406,6 +406,19 @@ body {
   gap: 16px;
 }
 
+.accordion-arrow {
+  font-size: 20px;
+  color: #64748b;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.accordion-item.active .accordion-arrow {
+  transform: rotate(90deg);
+  color: var(--neon-green);
+}
+
 .session-time {
   font-weight: 700;
   color: #0f172a;
