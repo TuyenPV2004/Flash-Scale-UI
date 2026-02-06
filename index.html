@@ -118,17 +118,22 @@
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         gap: 20px;
-        opacity: 0.6;
       }
       .partner-logo {
-        background: #252525;
-        height: 80px;
-        border-radius: 8px;
+        height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
-        font-weight: bold;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .partner-logo:hover {
+        opacity: 1;
+        transform: scale(1.1);
       }
     </style>
   </head>
@@ -546,12 +551,42 @@
           <h3 class="section-title">Đối tác thanh toán</h3>
         </div>
         <div class="partner-grid">
-          <div class="partner-logo">MOMO</div>
-          <div class="partner-logo">ZALOPAY</div>
-          <div class="partner-logo">VNPAY</div>
-          <div class="partner-logo">VISA</div>
-          <div class="partner-logo">MASTERCARD</div>
-          <div class="partner-logo">JCB</div>
+          <div
+            class="partner-logo"
+            style="
+              background-image: url(https://homepage.momocdn.net/fileuploads/svg/momo-file-240411162904.svg);
+            "
+          ></div>
+          <div
+            class="partner-logo"
+            style="
+              background-image: url(https://vnpay.vn/assets/images/logo-icon/logo-primary.svg);
+            "
+          ></div>
+          <div
+            class="partner-logo"
+            style="
+              background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1280px-PayPal.svg.png);
+            "
+          ></div>
+          <div
+            class="partner-logo"
+            style="
+              background-image: url(&quot;https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg&quot;);
+            "
+          ></div>
+          <div
+            class="partner-logo"
+            style="
+              background-image: url(&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png&quot;);
+            "
+          ></div>
+          <div
+            class="partner-logo"
+            style="
+              background-image: url(&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JCB_logo.svg/1200px-JCB_logo.svg.png&quot;);
+            "
+          ></div>
         </div>
       </section>
     </main>
