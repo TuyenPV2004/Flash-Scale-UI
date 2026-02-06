@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chọn ghế - FlashTicket</title>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/seat-selection.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    <header style="height: 70px; background: #1c1c1e; display: flex; align-items: center; padding: 0 30px; border-bottom: 1px solid #333; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <a href="booking.html" style="color: white; font-size: 20px;"><i class="ph-bold ph-arrow-left"></i></a>
+            <span style="font-weight: 700; font-size: 18px;">Chọn vị trí ngồi</span>
+        </div>
+        <div style="font-size: 14px; color: #a0a0a0;">
+            Thời gian giữ ghế: <span style="color: #ef4444; font-weight: 700;">09:45</span>
+        </div>
+    </header>
+
+    <div class="seat-layout">
+        <div class="main-map-area">
+            <div class="map-header">
+                <div class="legend-item"><div class="seat-dot available"></div> Trống</div>
+                <div class="legend-item"><div class="seat-dot selected"></div> Đang chọn</div>
+                <div class="legend-item"><div class="seat-dot sold"></div> Đã bán</div>
+            </div>
+
+            <div class="map-viewport" id="viewport">
+                <div class="map-container" id="mapContainer">
+                    <div class="stage-area">STAGE</div>
+
+                    <div class="seat-grid zone-a">
+                        <div class="row">
+                            <div class="row-label">A</div>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn sold"></button> <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn sold"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                        </div>
+                        <div class="row">
+                            <div class="row-label">B</div>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn sold"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 3500000)"></button>
+                        </div>
+                    </div>
+
+                    <div style="height: 40px;"></div>
+
+                    <div class="seat-grid zone-b">
+                        <div class="row">
+                            <div class="row-label">C</div>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                        </div>
+                         <div class="row">
+                            <div class="row-label">D</div>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn sold"></button>
+                            <button class="seat-btn sold"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                            <button class="seat-btn available" onclick="toggleSeat(this, 2500000)"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolbox">
+                <button class="tool-btn" onclick="zoom(0.1)"><i class="ph-bold ph-plus"></i></button>
+                <button class="tool-btn" onclick="zoom(-0.1)"><i class="ph-bold ph-minus"></i></button>
+                <button class="tool-btn" onclick="resetZoom()"><i class="ph-bold ph-arrows-out"></i></button>
+            </div>
+        </div>
+
+        <aside class="sidebar-summary">
+            <div class="event-info-card">
+                <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=600" class="event-thumb-mini">
+                <h2>The Eras Tour - Taylor Swift</h2>
+                <div class="text-mute"><i class="ph-fill ph-calendar-blank"></i> 15/10/2026 • 20:00</div>
+                <div class="text-mute"><i class="ph-fill ph-map-pin"></i> SVĐ Quốc Gia Mỹ Đình</div>
+            </div>
+
+            <div class="price-list">
+                <h3 style="font-size: 16px; margin-bottom: 16px;">Hạng vé</h3>
+                <div class="price-item">
+                    <span><span class="zone-indicator" style="background: var(--zone-a);"></span>CAT 1 - Zone A</span>
+                    <strong>3.500.000 ₫</strong>
+                </div>
+                <div class="price-item">
+                    <span><span class="zone-indicator" style="background: var(--zone-b);"></span>CAT 2 - Zone B</span>
+                    <strong>2.500.000 ₫</strong>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+                    <span class="text-mute">Đã chọn:</span>
+                    <strong id="seatCount">0 ghế</strong>
+                </div>
+                
+                <button id="checkoutBtn" class="cta-btn" onclick="window.location.href='checkout.html'">
+                    <span>Vui lòng chọn ghế</span>
+                    <span>0 ₫</span>
+                </button>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        let currentScale = 1;
+        let totalAmount = 0;
+        let selectedSeats = 0;
+
+        // Zoom Logic
+        function zoom(delta) {
+            currentScale += delta;
+            if(currentScale < 0.5) currentScale = 0.5;
+            if(currentScale > 2) currentScale = 2;
+            document.getElementById('mapContainer').style.transform = `scale(${currentScale})`;
+        }
+        function resetZoom() {
+            currentScale = 1;
+            document.getElementById('mapContainer').style.transform = `scale(1)`;
+        }
+
+        // Seat Logic
+        function toggleSeat(btn, price) {
+            if (btn.classList.contains('selected')) {
+                // Bỏ chọn
+                btn.classList.remove('selected');
+                btn.classList.add('available');
+                totalAmount -= price;
+                selectedSeats--;
+            } else {
+                // Chọn
+                btn.classList.remove('available');
+                btn.classList.add('selected');
+                totalAmount += price;
+                selectedSeats++;
+            }
+            updateSidebar();
+        }
+
+        function updateSidebar() {
+            document.getElementById('seatCount').innerText = `${selectedSeats} ghế`;
+            const btn = document.getElementById('checkoutBtn');
+            const priceText = btn.querySelector('span:last-child');
+            const labelText = btn.querySelector('span:first-child');
+
+            priceText.innerText = totalAmount.toLocaleString('vi-VN') + ' ₫';
+
+            if (selectedSeats > 0) {
+                btn.classList.add('active');
+                btn.disabled = false;
+                labelText.innerText = 'Thanh toán ngay';
+            } else {
+                btn.classList.remove('active');
+                btn.disabled = true;
+                labelText.innerText = 'Vui lòng chọn ghế';
+            }
+        }
+    </script>
+  </body>
+</html>

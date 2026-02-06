@@ -1,0 +1,240 @@
+/* --- BIẾN MÀU SẮC RIÊNG CHO TRANG SEAT SELECTION --- */
+:root {
+  --bg-dark: #111111;
+  --bg-map: #1c1c1e;
+  --bg-sidebar: #252525;
+  --seat-available: #ffffff;
+  --seat-selected: #00ba51;
+  --seat-sold: #ef4444;
+  --zone-a: #facc15; /* Vàng chanh */
+  --zone-b: #d946ef; /* Hồng tím */
+  --text-white: #ffffff;
+  --text-gray: #a0a0a0;
+  --border: #333333;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  height: 100vh;
+  overflow: hidden; /* Cố định màn hình để map cuộn bên trong */
+}
+
+/* --- TỔNG THỂ LAYOUT (70% - 30%) --- */
+.seat-layout {
+  display: flex;
+  height: calc(100vh - 70px); /* Trừ đi chiều cao Header */
+}
+
+/* --- VÙNG CHÍNH: BẢN ĐỒ GHẾ (70%) --- */
+.main-map-area {
+  flex: 7;
+  background-color: var(--bg-map);
+  position: relative;
+  overflow: hidden; /* Để xử lý zoom/pan */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 1. Header của Map (Legend) */
+.map-header {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background: rgba(28, 28, 30, 0.9);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+.seat-dot {
+  width: 24px; height: 24px;
+  border-radius: 6px 6px 8px 8px; /* Hình dáng ghế */
+  border: 1px solid #444;
+}
+.seat-dot.available { background: var(--seat-available); }
+.seat-dot.selected { background: var(--seat-selected); border-color: var(--seat-selected); box-shadow: 0 0 10px rgba(0, 186, 81, 0.5); }
+.seat-dot.sold { background: var(--seat-sold); border-color: var(--seat-sold); opacity: 0.3; }
+
+/* 2. Sơ đồ ghế (Zoomable Container) */
+.map-viewport {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  cursor: grab;
+  padding: 100px; /* Padding lớn để dễ pan */
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: center center;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Sân khấu */
+.stage-area {
+  width: 600px;
+  height: 120px;
+  background: linear-gradient(180deg, #444 0%, #333 100%);
+  border-radius: 0 0 50% 50%; /* Hình oval/bán nguyệt */
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 4px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border-top: 4px solid var(--seat-selected); /* Điểm nhấn sân khấu */
+}
+
+/* Grid ghế */
+.seat-grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.row-label {
+  width: 30px;
+  text-align: right;
+  font-weight: 700;
+  color: var(--text-gray);
+  margin-right: 20px;
+}
+
+.seat-btn {
+  width: 36px; height: 36px;
+  border-radius: 8px 8px 12px 12px;
+  border: none;
+  cursor: pointer;
+  background: var(--seat-available);
+  transition: all 0.15s;
+  position: relative;
+}
+.seat-btn:hover:not(.sold) { transform: scale(1.2); z-index: 2; }
+.seat-btn.selected { background: var(--seat-selected); color: white; }
+.seat-btn.sold { background: var(--seat-sold); cursor: not-allowed; opacity: 0.3; }
+
+/* Phân khu màu sắc (Zoning) */
+.zone-a .seat-btn.available { border-bottom: 4px solid var(--zone-a); }
+.zone-b .seat-btn.available { border-bottom: 4px solid var(--zone-b); }
+
+/* 3. Toolbox (Zoom Control) */
+.toolbox {
+  position: absolute;
+  bottom: 30px; left: 30px;
+  background: rgba(37, 37, 37, 0.9);
+  padding: 8px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--border);
+}
+
+.tool-btn {
+  width: 40px; height: 40px;
+  background: transparent;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.tool-btn:hover { background: #444; }
+
+/* --- SIDEBAR: TÓM TẮT (30%) --- */
+.sidebar-summary {
+  flex: 3;
+  background-color: var(--bg-sidebar);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 20;
+}
+
+.event-info-card {
+  margin-bottom: 30px;
+}
+.event-thumb-mini {
+  width: 100%; height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+
+.price-list {
+  background: rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: auto; /* Đẩy CTA xuống đáy */
+}
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.price-item:last-child { border: none; margin: 0; padding: 0; }
+.zone-indicator {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* Nút CTA ở đáy sidebar */
+.sidebar-footer {
+  margin-top: 20px;
+}
+.cta-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: not-allowed;
+  background: #444;
+  color: #888;
+  transition: all 0.3s;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.cta-btn.active {
+  background: var(--seat-selected);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 186, 81, 0.4);
+}
+.cta-btn.active:hover { background: #009641; }
+
+/* Responsive text */
+h2 { font-size: 20px; margin-bottom: 8px; }
+.text-mute { color: var(--text-gray); font-size: 14px; }
