@@ -20,6 +20,54 @@ body {
   overflow: hidden; /* Cố định màn hình để map cuộn bên trong */
 }
 
+/* --- HEADER: TOP NAVIGATION --- */
+.header-nav {
+  height: 70px;
+  background: #1c1c1e;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.header-map-section {
+  flex: 7;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  position: relative;
+  height: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-legend {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 24px;
+}
+
+.header-sidebar-section {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 30px;
+  border-left: 1px solid var(--border);
+  height: 100%;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
 /* --- TỔNG THỂ LAYOUT (70% - 30%) --- */
 .seat-layout {
   display: flex;
@@ -36,27 +84,11 @@ body {
   flex-direction: column;
 }
 
-/* 1. Header của Map (Legend) */
-.map-header {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  background: rgba(28, 28, 30, 0.9);
-  backdrop-filter: blur(5px);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  border-bottom: 1px solid var(--border);
-}
-
 .legend-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 13px; /* Phông chữ nhỏ hơn chút */
   color: var(--text-gray);
 }
 
@@ -88,7 +120,7 @@ body {
   align-items: center;
   overflow: auto;
   cursor: grab;
-  padding: 150px 100px; /* Thêm padding top/bottom rộng hơn */
+  padding: 60px 100px; /* Giảm padding top từ 150px xuống 60px */
 }
 
 /* Bật tính năng "Safe" alignment nếu trình duyệt hỗ trợ, hoặc để tự nhiên */
@@ -126,7 +158,7 @@ body {
 .seat-grid {
   display: grid;
   gap: 12px;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px;  XÓA BỎ MARGIN NÀY VÌ ĐÃ CÓ PADDING CỦA ZONE-BLOCK */
 }
 .row {
   display: flex;
@@ -167,10 +199,10 @@ body {
 
 /* Phân khu màu sắc (Zoning) */
 .zone-block {
-  padding: 30px;
+  padding: 24px 30px; /* Thu hẹp padding dọc từ 30px xuống 24px */
   border: 2px solid transparent;
   border-radius: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 30px; /* Giảm từ 40px xuống 30px */
   position: relative;
   background: rgba(255, 255, 255, 0.02);
   transition: all 0.3s;
@@ -258,35 +290,35 @@ body {
   border-left: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  padding: 24px; /* Giảm từ 30px */
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 20;
 }
 
 .event-info-card {
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Giảm từ 30px */
 }
 .event-thumb-mini {
   width: 100%;
-  height: 160px;
+  height: 120px; /* Giảm từ 160px */
   object-fit: cover;
   border-radius: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 12px; /* Giảm từ 20px */
   border: 1px solid var(--border);
 }
 
 .price-list {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 12px;
-  padding: 20px;
+  padding: 16px; /* Giảm từ 20px */
   margin-bottom: auto; /* Đẩy CTA xuống đáy */
 }
 .price-item {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
-  padding-bottom: 12px;
+  margin-bottom: 8px; /* Giảm từ 12px */
+  padding-bottom: 8px; /* Giảm từ 12px */
   border-bottom: 1px solid var(--border);
 }
 .price-item:last-child {
@@ -296,8 +328,8 @@ body {
 }
 .zone-indicator {
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 10px; /* Giảm từ 12px */
+  height: 10px; /* Giảm từ 12px */
   border-radius: 50%;
   margin-right: 8px;
 }
